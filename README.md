@@ -17,14 +17,14 @@ $ sudo dnf install pip -y
 https://go.dev/dl/go1.24.2.linux-amd64.tar.gz     \
 $ rm -rf /usr/local/go && tar -C /usr/local -xzf go1.24.2.linux-amd64.tar.gz     \ 
 $ export PATH=$PATH:/usr/local/go/bin     \
-$ go version     \ 
+$ go version     
 
 # Podman Desktop (For Linux 9?)
 $ sudo yum install flatpak     \ 
 $ flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo     \ 
 $ flatpak install --user flathub io.podman_desktop.PodmanDesktop     \ 
 $ flatpak update --user io.podman_desktop.PodmanDesktop     \ 
-$ flatpak run io.podman_desktop.PodmanDesktop     \ 
+$ flatpak run io.podman_desktop.PodmanDesktop      
 
 # Kubernetes (For Ubuntu to avoid disabling Selinux?)
 Kubectl, kind, minikube, kubeadm 
@@ -33,13 +33,13 @@ Kubectl, kind, minikube, kubeadm
 $ cd Downloads     \
 $ ls     \ 
 $ sudo dnf install <code-insiders>.rpm     \ 
-$ sudo rm <code-insiders>.rpm     \ 
+$ sudo rm <code-insiders>.rpm      
 
 # Ubuntu 24.04 
 # ROS2 and Gazebo (Gazebo not currently supported on linux9)  
 https://ubuntu.com/download/desktop/thank-you?version=24.04.2&architecture=amd64&lts=true     \
 $ sudo mkdir ~/iso     \
-$ sudo mv ~/Downloads/ubuntu-24.04.2-desktop-amd64.iso ~/iso     \
+$ sudo mv ~/Downloads/ubuntu-24.04.2-desktop-amd64.iso ~/iso     
 # VM creation here (Start user interface for creation, in case default storage may need to be changed)
 # Auto-install
 
