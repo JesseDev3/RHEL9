@@ -3,7 +3,7 @@
 
 # Cockpit allows for Ubuntu Focal (20.04) vm creation that can pair Ros Noetic with Gazebo
 # RHEL does not support VM qemu domain and is discouraged for production environments
-$ systemctl enable --now cockpit.socket \n
+$ systemctl enable --now cockpit.socket /n
 $ sudo dnf install cockpit-machines
 # Install virt packages if not already available
 $ sudo dnf group install "Virtualization Host"
