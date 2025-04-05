@@ -1,7 +1,5 @@
 # RHEL9
-
-linux 9 
-## / , /home , /tmp , /var , /var/log , /var/log/audit , /var/tmp , /boot  ##
+# / , /home , /tmp , /var , /var/log , /var/log/audit , /var/tmp , /boot  #
 
 # Cockpit also allows for Ubuntu Focal (20.04) vm creation that can pair Ros Noetic with Gazebo
 # RHEL does not support VM qemu domain and is discouraged for production environments
