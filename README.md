@@ -11,7 +11,7 @@ $ sudo dnf install qemu-kvm libvirt virt-install virt-viewer     \
 $ for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done     \
 $ virt-host-validate     \
 $ sudo dnf update -y     \
-$ sudo dnf install pip -y     \
+$ sudo dnf install pip -y     
 
 # Go https://go.dev/doc/install 
 https://go.dev/dl/go1.24.2.linux-amd64.tar.gz     \
