@@ -54,7 +54,7 @@ Then use terminal to install Desktop (flavour)
 # VM Creation 
 VMM \
 VMware Fusion (Mac) \
-Cockpit - localhost:9090 (stored on computer) or IP:9090 (unsecure/no TLS) \
+Cockpit - localhost:9090 (stored on computer) or HOST-IP:9090 (unsecure/no TLS) \
 VMware Workstation Pro (Windows/Linux) - requires vsphere or vcenter esxi for netboot 
 
 # Auto-install
