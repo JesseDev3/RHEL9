@@ -44,6 +44,7 @@ $ sudo mv ~/Downloads/ubuntu-24.04.2-desktop-amd64.iso ~/iso
 # VM creation here 
 (Start user interface for creation, in case default storage may need to be changed)
 # Auto-install
+auto-install.yaml
 \
 <br>
 # Kubernetes (For Ubuntu to avoid disabling Selinux)
