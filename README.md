@@ -1,4 +1,4 @@
-# RHEL9
+# RHEL9 <br> https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/
 / , /home , /tmp , /var , /var/tmp , /var/log , /var/log/audit , /boot  
 
 # Cockpit allows for Ubuntu Focal (20.04) vm creation that can pair Ros Noetic with Gazebo
