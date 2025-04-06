@@ -29,7 +29,6 @@ $ cd Downloads && ls <br>
 $ sudo dnf install (code-insiders).rpm && sudo rm (code-insiders).rpm
 
 # Podman Desktop
-$ sudo yum install flatpak <br>
 $ flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo <br> 
 $ flatpak install --user flathub io.podman_desktop.PodmanDesktop <br> 
 $ flatpak update --user io.podman_desktop.PodmanDesktop <br> 
