@@ -26,7 +26,7 @@ $ flatpak install --user flathub io.podman_desktop.PodmanDesktop <br>
 $ flatpak update --user io.podman_desktop.PodmanDesktop <br> 
 $ flatpak run io.podman_desktop.PodmanDesktop      
 
-# Kubernetes (For Ubuntu to avoid disabling Selinux?)
+# Kubernetes (For Ubuntu to avoid disabling Selinux)
 Kubectl, kind, minikube, kubeadm 
 
 # VS  https://code.visualstudio.com/insiders/#
