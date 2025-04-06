@@ -61,7 +61,7 @@ VMware Workstation Pro (Windows/Linux) - requires vsphere or vcenter esxi for ne
 auto-install.yaml
 \
 <br>
-# ROS2(QT) / Gazebo
+# ROS2(QT)
 $ locale  # check for UTF-8 \
 $ sudo apt update && sudo apt install locales \
 sudo locale-gen en_US en_US.UTF-8 \
@@ -77,6 +77,12 @@ $ sudo apt update && sudo apt install ros-dev-tools \
 $ sudo apt update -y && sudo apt upgrade -y \
 $ sudo apt install ros-jazzy-desktop \
 $ source /opt/ros/jazzy/setup.bash
+<br>
+# Gazebo Harmonic
+$ sudo apt-get update && sudo apt-get install lsb-release gnupg \
+$ sudo curl https://packages.osrfoundation.org/gazebo.gpg --output /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null \
+$ sudo apt-get update && sudo apt-get install gz-ionic
 <br>
 # Kubernetes (For Ubuntu to avoid disabling Selinux)
 Kubectl, kind, minikube, kubeadm 
