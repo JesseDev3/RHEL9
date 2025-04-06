@@ -1,0 +1,25 @@
+# RHEL9 
+https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/ \
+/ , /home , /tmp , /var , /var/tmp , /var/log , /var/log/audit , /boot \
+Always shred or clean drives and motherboards upon disposal if possible, to avoid credential harvesting with openwrt and py dump of partitions or other methods
+
+# Cockpit allows for Ubuntu Focal(20.04)/ROS-Noetic/Gazebo (Gazebo not currently supported on linux9)
+https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/managing_systems_using_the_rhel_9_web_console/index \
+$ sudo dnf update -y \
+sudo yum install -y flatpak kubelet kubeadm kubectl \
+$ sudo dnf install -y cockpit-machines qemu-kvm libvirt virt-install virt-viewer go
+$ for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done \
+$ virt-host-validate \
+$ flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo <br> 
+$ flatpak install --user flathub io.podman_desktop.PodmanDesktop <br> 
+$ flatpak update --user io.podman_desktop.PodmanDesktop <br> 
+$ flatpak run io.podman_desktop.PodmanDesktop
+$ go install sigs.k8s.io/kind@v0.27.0 \
+$ sudo mv ~/go/bin/kind /bin && sudo rmdir ~/go \
+$ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
+sudo rpm -Uvh minikube-latest.x86_64.rpm
+$ systemctl enable --now cockpit.socket grafana-server.service kubelet\
+# VS Code https://code.visualstudio.com/insiders/#
+$ cd Downloads && ls \
+$ sudo dnf install (code-insiders).rpm && sudo rm (code-insiders).rpm \
+$ sudo dnf update -y \
