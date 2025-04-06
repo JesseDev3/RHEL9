@@ -32,8 +32,8 @@ Kubectl, kind, minikube, kubeadm
 # VS  https://code.visualstudio.com/insiders/#
 $ cd Downloads <br>
 $ ls <br> 
-$ sudo dnf install <code-insiders>.rpm <br> 
-$ sudo rm <code-insiders>.rpm      
+$ sudo dnf install (code-insiders).rpm <br> 
+$ sudo rm (code-insiders).rpm      
 
 # Ubuntu 24.04 
 # ROS2 and Gazebo (Gazebo not currently supported on linux9)  
