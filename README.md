@@ -19,7 +19,7 @@ $ rm -rf /usr/local/go && tar -C /usr/local -xzf go1.24.2.linux-amd64.tar.gz \
 $ export PATH=$PATH:/usr/local/go/bin \
 $ go version     
 
-# Podman Desktop (For Linux 9?)
+# Podman Desktop
 $ sudo yum install flatpak \ 
 $ flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo \ 
 $ flatpak install --user flathub io.podman_desktop.PodmanDesktop \ 
