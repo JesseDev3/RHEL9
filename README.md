@@ -30,9 +30,9 @@ $ flatpak run io.podman_desktop.PodmanDesktop
 Kubectl, kind, minikube, kubeadm 
 
 # VS  https://code.visualstudio.com/insiders/#
-$ cd Downloads \
-$ ls \ 
-$ sudo dnf install <code-insiders>.rpm \ 
+$ cd Downloads <br>
+$ ls <br> 
+$ sudo dnf install <code-insiders>.rpm <br> 
 $ sudo rm <code-insiders>.rpm      
 
 # Ubuntu 24.04 
