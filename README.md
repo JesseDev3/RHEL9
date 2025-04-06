@@ -25,7 +25,13 @@ $ sudo dnf install pip -y
 $ https://go.dev/dl/go1.24.2.linux-amd64.tar.gz \
 $ rm -rf /usr/local/go && tar -C /usr/local -xzf go1.24.2.linux-amd64.tar.gz \ 
 $ export PATH=$PATH:/usr/local/go/bin \
-$ go version     
+$ go version
+
+# VS Code https://code.visualstudio.com/insiders/#
+$ cd Downloads <br>
+$ ls <br> 
+$ sudo dnf install (code-insiders).rpm <br> 
+$ sudo rm (code-insiders).rpm
 
 # Podman Desktop
 $ sudo yum install flatpak <br>
@@ -33,12 +39,6 @@ $ flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/fla
 $ flatpak install --user flathub io.podman_desktop.PodmanDesktop <br> 
 $ flatpak update --user io.podman_desktop.PodmanDesktop <br> 
 $ flatpak run io.podman_desktop.PodmanDesktop      
-
-# VS Code https://code.visualstudio.com/insiders/#
-$ cd Downloads <br>
-$ ls <br> 
-$ sudo dnf install (code-insiders).rpm <br> 
-$ sudo rm (code-insiders).rpm
 
 # IT Tools :8080
 $ podman run -d --name it-tools --restart unless-stopped -p 8080:80 corentinth/it-tools:latest 
