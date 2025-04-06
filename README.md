@@ -4,7 +4,6 @@ https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/ \
 
 # Cockpit allows for Ubuntu Focal(20.04)/ROS-Noetic/Gazebo (Gazebo not currently supported on linux9)
 https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/managing_systems_using_the_rhel_9_web_console/index \
-** RHEL does not support VM qemu domain and is discouraged for production environments ** \
 <br>
 $ systemctl enable --now cockpit.socket \
 $ sudo dnf install cockpit-machines
@@ -52,6 +51,7 @@ https://ubuntu.com/download/server/arm \
 Then use terminal to install Desktop (flavour)
 
 # VM Creation 
+** RHEL does not support VM qemu domain and is discouraged for production environments ** \
 VMM \
 VMware Fusion (Mac) \
 Cockpit - localhost:9090 (stored on computer) or HOST-IP:9090 (unsecure/no TLS) \
@@ -85,10 +85,32 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-
 $ sudo apt-get update && sudo apt-get install gz-harmonic
 <br>
 # Kubernetes (For Ubuntu to avoid disabling Selinux)
-Kubectl, kind, minikube, kubeadm 
-
-
-
+Kubectl, kind, minikube, kubeadm \
+$ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
+$ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256" \
+$ echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check \
+$ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl \
+$ kubectl version –-client \
+$ golang.org/dl/>copy link location \
+wget url \
+ll \
+tar -xzvf "<file>" \
+./go/bin/go \
+sudo mv go /usr/local/ \
+ll /usr/local \
+vi ~/.bashrc \
+$ export PATH=$PATH:/usr/local/go/bin \
+$ source ~/.bash.rc \
+$ go install sigs.k8s.io/kind@v0.26.0 \
+$ curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64 
+sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64 \
+$ https://github.com/helm/helm/releases \
+$ tar -zxvf helm-v3.0.0-linux-amd64.tar.gz \
+$ mv linux-amd64/helm /usr/local/bin/helm \
+$ helm repo add bitnami https://charts.bitnami.com/bitnami \
+$ helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard \
+$ helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/ 
+bitnami/
 
  
 
