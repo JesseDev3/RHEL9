@@ -41,7 +41,7 @@ $ flatpak update --user io.podman_desktop.PodmanDesktop <br>
 $ flatpak run io.podman_desktop.PodmanDesktop
 
 # K8 (Kubernetes)
-$ sudo yum install -y kubelet kubeadm kubectl
+$ sudo yum install -y kubelet kubeadm kubectl \
 $ go install sigs.k8s.io/kind@v0.27.0
 
 # IT Tools :8080
