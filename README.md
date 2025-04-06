@@ -3,6 +3,7 @@ https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/ \
 / , /home , /tmp , /var , /var/tmp , /var/log , /var/log/audit , /boot  
 
 # Cockpit allows for Ubuntu Focal (20.04) vm creation that can pair Ros Noetic with Gazebo
+https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/managing_systems_using_the_rhel_9_web_console/index \
 ** RHEL does not support VM qemu domain and is discouraged for production environments ** \
 <br>
 $ systemctl enable --now cockpit.socket \
