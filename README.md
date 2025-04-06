@@ -13,7 +13,7 @@ $ virt-host-validate \
 $ sudo dnf update -y \
 $ sudo dnf install pip -y     
 
-# Go https://go.dev/doc/install 
+# Install Go https://go.dev/doc/install 
 $ https://go.dev/dl/go1.24.2.linux-amd64.tar.gz \
 $ rm -rf /usr/local/go && tar -C /usr/local -xzf go1.24.2.linux-amd64.tar.gz \ 
 $ export PATH=$PATH:/usr/local/go/bin \
