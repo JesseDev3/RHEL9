@@ -101,34 +101,7 @@ $ sudo curl https://packages.osrfoundation.org/gazebo.gpg --output /usr/share/ke
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null \
 $ sudo apt-get update && sudo apt-get install gz-harmonic
 <br>
-# Kubernetes
-Kubectl, kind, minikube, kubeadm \
-$ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
-$ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256" \
-$ echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check \
-$ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl \
-$ kubectl version –-client \
-$ golang.org/dl/>copy link location \
-wget url \
-ll \
-tar -xzvf "<file>" \
-./go/bin/go \
-sudo mv go /usr/local/ \
-ll /usr/local \
-vi ~/.bashrc \
-$ export PATH=$PATH:/usr/local/go/bin \
-$ source ~/.bash.rc \
-$ go install sigs.k8s.io/kind@v0.26.0 \
-$ curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64 
-sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64 \
-$ https://github.com/helm/helm/releases \
-$ tar -zxvf helm-v3.0.0-linux-amd64.tar.gz \
-$ mv linux-amd64/helm /usr/local/bin/helm \
-$ helm repo add bitnami https://charts.bitnami.com/bitnami \
-$ helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard \
-$ helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/ 
-bitnami/ \
-<br><br>
+
 
 
  
