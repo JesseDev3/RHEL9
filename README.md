@@ -21,11 +21,8 @@ $ virt-host-validate \
 $ sudo dnf update -y \
 $ sudo dnf install -y pip     
 
-# Install Go https://go.dev/doc/install 
-$ https://go.dev/dl/go1.24.2.linux-amd64.tar.gz \
-$ rm -rf /usr/local/go && tar -C /usr/local -xzf go1.24.2.linux-amd64.tar.gz \ 
-$ export PATH=$PATH:/usr/local/go/bin \
-$ go version
+# Install Go 
+$ sudo dnf install -y go
 
 # VS Code https://code.visualstudio.com/insiders/#
 $ cd Downloads <br>
@@ -41,8 +38,14 @@ $ flatpak update --user io.podman_desktop.PodmanDesktop <br>
 $ flatpak run io.podman_desktop.PodmanDesktop
 
 # K8 (Kubernetes)
+Kubectl, kubeadm, kind, minikube \
 $ sudo yum install -y kubelet kubeadm kubectl \
 $ go install sigs.k8s.io/kind@v0.27.0
+$ sudo mv ~/go/bin/kind /bin
+$ sudo rmdir ~/go
+$ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
+sudo rpm -Uvh minikube-latest.x86_64.rpm
+
 
 # IT Tools :8080
 $ podman run -d --name it-tools --restart unless-stopped -p 8080:80 corentinth/it-tools:latest 
@@ -98,7 +101,7 @@ $ sudo curl https://packages.osrfoundation.org/gazebo.gpg --output /usr/share/ke
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null \
 $ sudo apt-get update && sudo apt-get install gz-harmonic
 <br>
-# Kubernetes <br> (For Ubuntu, to avoid disabling Selinux on Linux 9?)
+# Kubernetes
 Kubectl, kind, minikube, kubeadm \
 $ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
 $ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256" \
