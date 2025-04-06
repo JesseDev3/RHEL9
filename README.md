@@ -9,6 +9,9 @@ https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/
 $ systemctl enable --now cockpit.socket \
 $ sudo dnf install cockpit-machines
 
+# VPN
+Cockpit allows the creation of a Wireguard vpn that inserts an interface and can only be used if FIPS is disabled. While this does add convenience, Wireguard is not supported for production whereas Libreswan (a fork of Openswan IPsec) is a better option
+
 # Install virt packages if not already available
 $ sudo dnf group install "Virtualization Host" \
 $ sudo dnf install qemu-kvm libvirt virt-install virt-viewer \
