@@ -25,8 +25,7 @@ $ sudo dnf install -y pip
 $ sudo dnf install -y go
 
 # VS Code https://code.visualstudio.com/insiders/#
-$ cd Downloads <br>
-$ ls <br> 
+$ cd Downloads && ls <br>
 $ sudo dnf install (code-insiders).rpm && sudo rm (code-insiders).rpm
 
 # Podman Desktop
