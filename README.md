@@ -27,8 +27,7 @@ $ sudo dnf install -y go
 # VS Code https://code.visualstudio.com/insiders/#
 $ cd Downloads <br>
 $ ls <br> 
-$ sudo dnf install (code-insiders).rpm <br> 
-$ sudo rm (code-insiders).rpm
+$ sudo dnf install (code-insiders).rpm && sudo rm (code-insiders).rpm
 
 # Podman Desktop
 $ sudo yum install flatpak <br>
