@@ -21,7 +21,7 @@ $ go version
 
 # Podman Desktop
 $ sudo yum install flatpak \ 
-$ flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo \ 
+\$ flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo \ 
 $ flatpak install --user flathub io.podman_desktop.PodmanDesktop \ 
 $ flatpak update --user io.podman_desktop.PodmanDesktop \ 
 $ flatpak run io.podman_desktop.PodmanDesktop      
