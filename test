@@ -1,5 +1,5 @@
 sudo dnf update -y 
-sudo yum install -y flatpak kubelet kubeadm kubectl 
+sudo yum install -y flatpak  
 sudo dnf install -y cockpit-machines qemu-kvm libvirt virt-install virt-viewer go
 for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done 
 virt-host-validate 
@@ -7,6 +7,7 @@ flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flath
 flatpak install --user flathub io.podman_desktop.PodmanDesktop 
 flatpak update --user io.podman_desktop.PodmanDesktop 
 flatpak run io.podman_desktop.PodmanDesktop
+sudo yum install kubelet kubeadm kubectl
 go install sigs.k8s.io/kind@v0.27.0 
 sudo mv ~/go/bin/kind /bin && sudo rmdir ~/go 
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
