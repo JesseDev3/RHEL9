@@ -5,7 +5,6 @@ Always shred or clean drives and motherboards upon disposal if possible, to avoi
 
 # Cockpit allows for Ubuntu Focal(20.04)/ROS-Noetic/Gazebo (Gazebo not currently supported on linux9)
 https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/managing_systems_using_the_rhel_9_web_console/index \
-<br>
 $ systemctl enable --now cockpit.socket \
 $ sudo dnf install cockpit-machines
 
