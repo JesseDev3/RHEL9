@@ -18,7 +18,7 @@ $ go install sigs.k8s.io/kind@v0.27.0 \
 $ sudo mv ~/go/bin/kind /bin && sudo rmdir ~/go \
 $ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
 sudo rpm -Uvh minikube-latest.x86_64.rpm
-$ systemctl enable --now cockpit.socket grafana-server.service kubelet\
+$ systemctl enable --now cockpit.socket grafana-server.service kubelet \
 # VS Code https://code.visualstudio.com/insiders/#
 $ cd Downloads && ls \
 $ sudo dnf install (code-insiders).rpm && sudo rm (code-insiders).rpm \
