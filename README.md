@@ -53,7 +53,7 @@ Then use terminal to install Desktop (flavour)
 VMM \
 VMware Fusion (Mac) \
 Cockpit - localhost:9090 (stored on computer) or IP:9090 (unsecure/no TLS) \
-VMware Workstation Pro (Windows/Linux) - requires vsphere or vcenter esxi for netboot \
+VMware Workstation Pro (Windows/Linux) - requires vsphere or vcenter esxi for netboot 
 
 # Auto-install
 auto-install.yaml
