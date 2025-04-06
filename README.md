@@ -29,7 +29,7 @@ $ flatpak run io.podman_desktop.PodmanDesktop
 # Kubernetes (For Ubuntu to avoid disabling Selinux)
 Kubectl, kind, minikube, kubeadm 
 
-# VS  https://code.visualstudio.com/insiders/#
+# VS Code https://code.visualstudio.com/insiders/#
 $ cd Downloads <br>
 $ ls <br> 
 $ sudo dnf install (code-insiders).rpm <br> 
