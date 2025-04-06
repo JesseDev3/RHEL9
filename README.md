@@ -40,9 +40,9 @@ $ flatpak run io.podman_desktop.PodmanDesktop
 # K8 (Kubernetes)
 Kubectl, kubeadm, kind, minikube \
 $ sudo yum install -y kubelet kubeadm kubectl \
-$ go install sigs.k8s.io/kind@v0.27.0
-$ sudo mv ~/go/bin/kind /bin
-$ sudo rmdir ~/go
+$ go install sigs.k8s.io/kind@v0.27.0 \
+$ sudo mv ~/go/bin/kind /bin \
+$ sudo rmdir ~/go \
 $ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
 sudo rpm -Uvh minikube-latest.x86_64.rpm
 
