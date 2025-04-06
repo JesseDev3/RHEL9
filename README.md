@@ -38,7 +38,16 @@ $ flatpak run io.podman_desktop.PodmanDesktop
 $ cd Downloads <br>
 $ ls <br> 
 $ sudo dnf install (code-insiders).rpm <br> 
-$ sudo rm (code-insiders).rpm      
+$ sudo rm (code-insiders).rpm
+
+# IT Tools :8080
+podman run -d --name it-tools --restart unless-stopped -p 8080:80 corentinth/it-tools:latest \
+
+# Grafana :3000
+sudo systemctl daemon-reload \
+sudo systemctl start grafana-server \
+sudo systemctl status grafana-server \
+sudo systemctl enable grafana-server.service \
 
 # Ubuntu 24.04 <br> ROS2 and Gazebo Support 
 AMD \
