@@ -43,7 +43,7 @@ $ flatpak run io.podman_desktop.PodmanDesktop
 # IT Tools :8080
 $ podman run -d --name it-tools --restart unless-stopped -p 8080:80 corentinth/it-tools:latest 
 
-# Grafana :3000
+# Grafana :3000 (Change port IF running Kali-Linux)
 $ sudo systemctl daemon-reload \
 $ sudo systemctl start grafana-server \
 $ sudo systemctl status grafana-server \
