@@ -44,7 +44,7 @@ https://ubuntu.com/download/desktop/thank-you?version=24.04.2&architecture=amd64
 $ sudo mkdir ~/iso \
 $ sudo mv ~/Downloads/ubuntu-24.04.2-desktop-amd64.iso ~/iso  
 
-# VM creation here 
+# VM Creation 
 VMM \
 VMware Fusion (Mac) \
 Cockpit - localhost:9090 (stored on computer) or IP:9090 (unsecure/no TLS) \
