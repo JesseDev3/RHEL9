@@ -42,7 +42,8 @@ https://ubuntu.com/download/desktop/thank-you?version=24.04.2&architecture=amd64
 $ sudo mkdir ~/iso \
 $ sudo mv ~/Downloads/ubuntu-24.04.2-desktop-amd64.iso ~/iso     
 # VM creation here 
-(Start user interface for creation, in case default storage may need to be changed)
+(Start user interface for creation, in case default storage may need to be changed) \
+localhost:9090
 # Auto-install
 auto-install.yaml
 \
