@@ -2,7 +2,7 @@
 / , /home , /tmp , /var , /var/tmp , /var/log , /var/log/audit , /boot  
 
 # Cockpit allows for Ubuntu Focal (20.04) vm creation that can pair Ros Noetic with Gazebo
-** RHEL does not support VM qemu domain and is discouraged for production environments **
+** RHEL does not support VM qemu domain and is discouraged for production environments ** \
 $ systemctl enable --now cockpit.socket \
 $ sudo dnf install cockpit-machines
 
