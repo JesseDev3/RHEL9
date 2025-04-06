@@ -40,11 +40,12 @@ $ sudo dnf install (code-insiders).rpm <br>
 $ sudo rm (code-insiders).rpm      
 
 # Ubuntu 24.04 <br> ROS2 and Gazebo Support 
+AMD \
 https://ubuntu.com/download/desktop/thank-you?version=24.04.2&architecture=amd64&lts=true \
 $ sudo mkdir ~/iso \
 $ sudo mv ~/Downloads/ubuntu-24.04.2-desktop-amd64.iso ~/iso
 
-For Mac: \
+ARM \
 https://ubuntu.com/download/server/arm \
 Then use terminal to install Desktop (flavour)
 
