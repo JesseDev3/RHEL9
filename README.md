@@ -6,20 +6,20 @@ Always shred or clean drives and motherboards upon disposal if possible, to avoi
 # Cockpit allows for Ubuntu Focal(20.04)/ROS-Noetic/Gazebo (Gazebo not currently supported on linux9)
 https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/managing_systems_using_the_rhel_9_web_console/index \
 $ systemctl enable --now cockpit.socket \
-$ sudo dnf install cockpit-machines
+$ sudo dnf install -y cockpit-machines
 
 # VPN
 https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/configuring_and_managing_networking/configuring-a-vpn-connection_configuring-and-managing-networking#configuring-a-vpn-connection_configuring-and-managing-networking 
 <br>
 Cockpit allows the creation of a Wireguard vpn that inserts an interface and can only be used if FIPS is disabled. While this does add convenience, Wireguard is not recommended for production whereas Libreswan (a fork of Openswan IPsec) is.
 
-# Install virt packages (if not already available)
+Install virt packages (if not already available) 
 $ sudo dnf group install "Virtualization Host" \
 $ sudo dnf install qemu-kvm libvirt virt-install virt-viewer \
 $ for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done \
 $ virt-host-validate \
 $ sudo dnf update -y \
-$ sudo dnf install pip -y     
+$ sudo dnf install -y pip     
 
 # Install Go https://go.dev/doc/install 
 $ https://go.dev/dl/go1.24.2.linux-amd64.tar.gz \
@@ -38,7 +38,11 @@ $ sudo yum install flatpak <br>
 $ flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo <br> 
 $ flatpak install --user flathub io.podman_desktop.PodmanDesktop <br> 
 $ flatpak update --user io.podman_desktop.PodmanDesktop <br> 
-$ flatpak run io.podman_desktop.PodmanDesktop      
+$ flatpak run io.podman_desktop.PodmanDesktop
+
+# K8 (Kubernetes)
+$ sudo yum install -y kubelet kubeadm kubectl
+$ go install sigs.k8s.io/kind@v0.27.0
 
 # IT Tools :8080
 $ podman run -d --name it-tools --restart unless-stopped -p 8080:80 corentinth/it-tools:latest 
@@ -94,7 +98,7 @@ $ sudo curl https://packages.osrfoundation.org/gazebo.gpg --output /usr/share/ke
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null \
 $ sudo apt-get update && sudo apt-get install gz-harmonic
 <br>
-# Kubernetes <br> (For Ubuntu, to avoid disabling Selinux on Linux 9)
+# Kubernetes <br> (For Ubuntu, to avoid disabling Selinux on Linux 9?)
 Kubectl, kind, minikube, kubeadm \
 $ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
 $ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256" \
@@ -120,7 +124,9 @@ $ mv linux-amd64/helm /usr/local/bin/helm \
 $ helm repo add bitnami https://charts.bitnami.com/bitnami \
 $ helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard \
 $ helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/ 
-bitnami/
+bitnami/ \
+<br><br>
+
 
  
 
