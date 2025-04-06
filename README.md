@@ -38,8 +38,8 @@ $ flatpak run io.podman_desktop.PodmanDesktop
 
 # K8 (Kubernetes)
 Kubectl, kubeadm, kind, minikube \
-$ sudo yum install -y kubelet kubeadm kubectl 
-/**$ systemctl enable && systemctl start kubelet if necessary**\
+$ sudo yum install -y kubelet kubeadm kubectl \
+**$ systemctl enable && systemctl start kubelet if necessary**
 $ go install sigs.k8s.io/kind@v0.27.0 \
 $ sudo mv ~/go/bin/kind /bin \
 $ sudo rmdir ~/go \
