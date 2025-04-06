@@ -41,7 +41,7 @@ $ sudo yum install -y kubelet kubeadm kubectl \
 **$ systemctl enable && systemctl start kubelet if necessary** \
 $ go install sigs.k8s.io/kind@v0.27.0 \
 $ sudo mv ~/go/bin/kind /bin \
-$ sudo rmdir ~/go \
+$ sudo rmd -r ~/go \
 $ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
 sudo rpm -Uvh minikube-latest.x86_64.rpm
 
