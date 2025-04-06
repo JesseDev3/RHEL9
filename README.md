@@ -1,10 +1,11 @@
 # RHEL9
-/ , /home , /tmp , /var , /var/log , /var/log/audit , /var/tmp , /boot  
+/ , /home , /tmp , /var , /var/tmp , /var/log , /var/log/audit , /boot  
 
 # Cockpit allows for Ubuntu Focal (20.04) vm creation that can pair Ros Noetic with Gazebo
 # RHEL does not support VM qemu domain and is discouraged for production environments
 $ systemctl enable --now cockpit.socket \
-$ sudo dnf install cockpit-machines 
+$ sudo dnf install cockpit-machines
+
 # Install virt packages if not already available
 $ sudo dnf group install "Virtualization Host" \
 $ sudo dnf install qemu-kvm libvirt virt-install virt-viewer \
@@ -26,9 +27,6 @@ $ flatpak install --user flathub io.podman_desktop.PodmanDesktop <br>
 $ flatpak update --user io.podman_desktop.PodmanDesktop <br> 
 $ flatpak run io.podman_desktop.PodmanDesktop      
 
-# Kubernetes (For Ubuntu to avoid disabling Selinux)
-Kubectl, kind, minikube, kubeadm 
-
 # VS Code https://code.visualstudio.com/insiders/#
 $ cd Downloads <br>
 $ ls <br> 
@@ -42,6 +40,10 @@ $ sudo mkdir ~/iso \
 $ sudo mv ~/Downloads/ubuntu-24.04.2-desktop-amd64.iso ~/iso     
 # VM creation here (Start user interface for creation, in case default storage may need to be changed)
 # Auto-install
+<br>
+<br>
+# Kubernetes (For Ubuntu to avoid disabling Selinux)
+Kubectl, kind, minikube, kubeadm 
 
 
 
