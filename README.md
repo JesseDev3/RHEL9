@@ -37,7 +37,7 @@ $ sudo dnf install (code-insiders).rpm <br>
 $ sudo rm (code-insiders).rpm      
 
 # Ubuntu 24.04
-** ROS2 and Gazebo (Gazebo not currently supported on linux9) ** \  
+** ROS2 and Gazebo (Gazebo not currently supported on linux9) ** <br>  
 https://ubuntu.com/download/desktop/thank-you?version=24.04.2&architecture=amd64&lts=true \
 $ sudo mkdir ~/iso \
 $ sudo mv ~/Downloads/ubuntu-24.04.2-desktop-amd64.iso ~/iso     
