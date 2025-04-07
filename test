@@ -16,7 +16,7 @@ sudo dnf install -y cockpit-machines qemu-kvm libvirt virt-install virt-viewer g
 for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done 
 virt-host-validate 
 
-#Kubernetes Tools/Cockpit/Flatpack/Podman Desktop/VS-Code Insiders 
+#Kubernetes Tools/Cockpit/Flatpack/Podman Desktop/VS-Code Insiders (see VS Code repo line 10)
 #Comment out certain sections to exclude specific packages
 sudo yum install -y kubelet kubeadm kubectl flatpak
 go install sigs.k8s.io/kind@v0.27.0 
