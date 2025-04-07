@@ -21,4 +21,4 @@ flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flath
 flatpak install --user flathub io.podman_desktop.PodmanDesktop 
 flatpak update --user io.podman_desktop.PodmanDesktop 
 flatpak run io.podman_desktop.PodmanDesktop
-$ sudo dnf update -y 
+wget https://code.visualstudio.com/docs/?dv=linux64_rpm
