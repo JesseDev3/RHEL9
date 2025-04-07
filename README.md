@@ -68,7 +68,7 @@ Then use terminal to install Desktop (flavour)
 ** RHEL does not support VM qemu domain and is discouraged for production environments ** \
 https://support.broadcom.com/ \
 VMware Fusion (Mac) \
-Oracle Virtual Box (Supports VHDX and VMD) \
+Oracle Virtual Box (Supports VHDX and VMX) \
 Cockpit - localhost:9090 (stored on computer) or HOST-IP:9090 (unsecure/no TLS) \
 VMware Workstation Pro (Windows/Linux) - requires vsphere or vcenter esxi for netboot 
 
