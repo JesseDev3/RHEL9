@@ -14,10 +14,11 @@ gpgkey=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/repodata/repomd.xml.key
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
 
-#Virt/Go/Snap
+#Virt/Go/Snapd
 sudo dnf install -y cockpit-machines qemu-kvm libvirt virt-install virt-viewer go snapd
 for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done 
 virt-host-validate 
+sudo ln -s /var/lib/snapd/snap /snap
 
 #Kubernetes Tools/Cockpit/Flatpack/Podman Desktop/VS-Code Insiders (see VS Code repo line 10)
 #Comment out certain sections to exclude specific packages
@@ -33,6 +34,7 @@ flatpak update --user io.podman_desktop.PodmanDesktop
 # flatpak run io.podman_desktop.PodmanDesktop
 # need to add compose to bin step before launching
 sudo snap install code-insiders --classic
+
 
 
 
