@@ -66,6 +66,7 @@ Then use terminal to install Desktop (flavour)
 
 # VM Creation 
 ** RHEL does not support VM qemu domain and is discouraged for production environments ** \
+** Using VMM or Cockpit will create a VM in the qemu domain **  \
 https://support.broadcom.com/ \
 VMware Fusion (Mac) \
 Oracle Virtual Box (Supports VHDX and VMX) \
