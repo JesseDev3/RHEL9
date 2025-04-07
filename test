@@ -7,10 +7,9 @@ enabled=1
 gpgcheck=1
 gpgkey=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/repodata/repomd.xml.key
 EOF
-sudo dnf install -y cockpit-machines qemu-kvm libvirt virt-install virt-viewer go snapd container-tools kubelet kubeadm kubectl flatpak
+sudo yum dnf install -y cockpit-machines qemu-kvm libvirt virt-install virt-viewer go snapd container-tools kubelet kubeadm kubectl flatpak
 for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done 
 virt-host-validate 
-sudo ln -s /var/lib/snapd/snap /snap
 go install sigs.k8s.io/kind@v0.27.0 
 sudo mv ~/go/bin/kind /bin && sudo rm -r ~/go 
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
@@ -18,7 +17,8 @@ sudo rpm -Uvh minikube-latest.x86_64.rpm && sudo rm -r minikube-latest.x86_64.rp
 systemctl enable --now cockpit.socket snapd.socket grafana-server.service kubelet
 flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install --user flathub io.podman_desktop.PodmanDesktop 
-flatpak update --user io.podman_desktop.PodmanDesktop 
+flatpak update --user io.podman_desktop.PodmanDesktop
+sudo ln -s /var/lib/snapd/snap /snap
 sudo snap install code-insiders --classic
 flatpak run io.podman_desktop.PodmanDesktop
 
