@@ -21,4 +21,8 @@ flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flath
 flatpak install --user flathub io.podman_desktop.PodmanDesktop 
 flatpak update --user io.podman_desktop.PodmanDesktop 
 flatpak run io.podman_desktop.PodmanDesktop
-https://code.visualstudio.com/docs/?dv=linux64_rpm
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+dnf check-update
+sudo dnf install code-insiders
+
