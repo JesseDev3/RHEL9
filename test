@@ -1,6 +1,6 @@
 sudo dnf update -y 
 # Repos
-# Epel
+# Epel - for development purposes only, not suggested for production (Snap dependency)
 sudo dnf -y install epel-release
 # Kubernetes
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
