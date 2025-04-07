@@ -13,7 +13,7 @@ gpgkey=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/repodata/repomd.xml.key
 EOF
 sudo yum install -y kubelet kubeadm kubectl
 go install sigs.k8s.io/kind@v0.27.0 
-sudo mv ~/go/bin/kind /bin && sudo rmdir ~/go 
+sudo mv ~/go/bin/kind /bin && sudo rm -r ~/go 
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
 sudo rpm -Uvh minikube-latest.x86_64.rpm
 systemctl enable --now cockpit.socket grafana-server.service kubelet
