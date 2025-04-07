@@ -16,12 +16,12 @@ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest
 sudo rpm -Uvh minikube-latest.x86_64.rpm && sudo rm -r minikube-latest.x86_64.rpm
 systemctl enable --now cockpit.socket snapd.socket grafana-server.service kubelet
 flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install --user flathub io.podman_desktop.PodmanDesktop 
-flatpak update --user io.podman_desktop.PodmanDesktop
+flatpak install -y --user flathub io.podman_desktop.PodmanDesktop 
+flatpak update -y --user io.podman_desktop.PodmanDesktop
 sudo ln -s /var/lib/snapd/snap /snap
 sudo snap install code-insiders --classic
 flatpak run io.podman_desktop.PodmanDesktop
-
+systemctl start code-insiders
 
 
 sudo dnf update -y 
