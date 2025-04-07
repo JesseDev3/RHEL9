@@ -31,5 +31,4 @@ flatpak update --user io.podman_desktop.PodmanDesktop
 flatpak run io.podman_desktop.PodmanDesktop
 dnf check-update
 sudo dnf install code-insiders
-curl -LO "https://go.microsoft.com/fwlink/?LinkID=760867/$(curl -L -s https://go.microsoft.com/fwlink/?LinkID=760867.txt)/bin/linux/amd64/code-insiders
 
