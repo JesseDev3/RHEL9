@@ -54,6 +54,15 @@ $ sudo systemctl start grafana-server \
 $ sudo systemctl status grafana-server \
 $ sudo systemctl enable grafana-server.service 
 
+# VM Creation 
+** RHEL does not support VM qemu domain and is discouraged for production environments ** \
+** Using VMM or Cockpit will create a VM in the qemu domain **  \
+https://support.broadcom.com/ \
+VMware Fusion (Mac) \
+Oracle Virtual Box VDI (Platform supports both VHDX and VMX) \
+Cockpit - localhost:9090 (stored on computer) or HOST-IP:9090 (unsecure/no TLS) \
+VMware Workstation Pro (Windows/Linux) - requires vsphere or vcenter esxi for netboot
+
 # Ubuntu 24.04 <br> ROS2 and Gazebo Support 
 AMD \
 https://ubuntu.com/download/desktop/thank-you?version=24.04.2&architecture=amd64&lts=true \
@@ -63,15 +72,6 @@ $ sudo mv ~/Downloads/ubuntu-24.04.2-desktop-amd64.iso ~/iso
 ARM \
 https://ubuntu.com/download/server/arm \
 Then use terminal to install Desktop (flavour)
-
-# VM Creation 
-** RHEL does not support VM qemu domain and is discouraged for production environments ** \
-** Using VMM or Cockpit will create a VM in the qemu domain **  \
-https://support.broadcom.com/ \
-VMware Fusion (Mac) \
-Oracle Virtual Box VDI (Platform supports both VHDX and VMX) \
-Cockpit - localhost:9090 (stored on computer) or HOST-IP:9090 (unsecure/no TLS) \
-VMware Workstation Pro (Windows/Linux) - requires vsphere or vcenter esxi for netboot 
 
 # Auto-install
 auto-install.yaml
