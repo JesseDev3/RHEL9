@@ -18,13 +18,12 @@ virt-host-validate
 
 #Kubernetes Tools/Cockpit/Flatpack/Podman Desktop/VS-Code Insiders 
 #Comment out certain sections to exclude specific packages
-sudo yum install -y kubelet kubeadm kubectl
+sudo yum install -y kubelet kubeadm kubectl flatpak
 go install sigs.k8s.io/kind@v0.27.0 
 sudo mv ~/go/bin/kind /bin && sudo rm -r ~/go 
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
 sudo rpm -Uvh minikube-latest.x86_64.rpm && sudo rm -r minikube-latest.x86_64.rpm
 systemctl enable --now cockpit.socket grafana-server.service kubelet
-sudo yum install -y flatpak
 flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install --user flathub io.podman_desktop.PodmanDesktop 
 flatpak update --user io.podman_desktop.PodmanDesktop 
