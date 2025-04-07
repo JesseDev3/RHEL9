@@ -17,7 +17,7 @@ for drv in qemu network nodedev nwfilter secret storage interface; do systemctl 
 virt-host-validate 
 
 #Kubernetes Tools/Cockpit/Flatpack/Podman Desktop/VS-Code Insiders 
-#Comment out 
+#Comment out certain sections to exclude specific packages
 sudo yum install -y kubelet kubeadm kubectl
 go install sigs.k8s.io/kind@v0.27.0 
 sudo mv ~/go/bin/kind /bin && sudo rm -r ~/go 
