@@ -15,10 +15,10 @@ sudo yum install -y kubelet kubeadm kubectl
 go install sigs.k8s.io/kind@v0.27.0 
 sudo mv ~/go/bin/kind /bin && sudo rm -r ~/go 
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
-sudo rpm -Uvh minikube-latest.x86_64.rpm
+sudo rpm -Uvh minikube-latest.x86_64.rpm && sudo rm -r minikube-latest.x86_64.rpm
 systemctl enable --now cockpit.socket grafana-server.service kubelet
 flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install --user flathub io.podman_desktop.PodmanDesktop 
 flatpak update --user io.podman_desktop.PodmanDesktop 
 flatpak run io.podman_desktop.PodmanDesktop
-wget https://code.visualstudio.com/docs/?dv=linux64_rpm
+https://code.visualstudio.com/docs/?dv=linux64_rpm
