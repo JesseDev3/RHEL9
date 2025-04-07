@@ -6,7 +6,7 @@ baseurl=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/
 enabled=1
 gpgcheck=1
 gpgkey=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/repodata/repomd.xml.key
-EOF
+>EOF
 sudo dnf install -y cockpit-machines qemu-kvm libvirt virt-install virt-viewer go snapd container-tools kubelet kubeadm kubectl flatpak
 for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done 
 virt-host-validate 
