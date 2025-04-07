@@ -1,12 +1,14 @@
 sudo dnf -y install epel-release
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+> [kubernetes]
+> name=Kubernetes
+> baseurl=https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+> exclude=kubelet kubeadm kubectl
+> EOF
 [kubernetes]
 name=Kubernetes
-baseurl=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/
-enabled=1
-gpgcheck=1
-gpgkey=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/repodata/repomd.xml.key
->EOF
+baseurl=https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+exclude=kubelet kubeadm kubectl
 sudo dnf install -y cockpit-machines qemu-kvm libvirt virt-install virt-viewer go snapd container-tools kubelet kubeadm kubectl flatpak
 for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done 
 virt-host-validate 
