@@ -1,3 +1,8 @@
+# At the moment this code is for copy and paste into terminal for linux 9 to setup repos and install
+# Cockpit, Virt, Go, Snapd, Kubernetes tools (kubeadm, kubectl, kind, minikube), Container-tools, Flatpak, 
+# Podman Desktop, VS Code all W/O disabling Selinux or Secure Boot. Working on changing the use of the 
+# Snapd daemon to handle VS code updates
+
 sudo dnf -y install epel-release
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
