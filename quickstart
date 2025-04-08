@@ -15,12 +15,15 @@ EOF
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
 sudo dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
-sudo dnf install -y cockpit-machines qemu-kvm libvirt virt-install virt-viewer go code-insiders container-tools kubelet kubeadm kubectl flatpak
-dnf-plugins-core docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+curl -fsSL https://rpm.nodesource.com/setup_23.x -o nodesource_setup.sh 
+sudo bash nodesource_setup.sh
+sudo dnf install -y nodejs cockpit-machines qemu-kvm libvirt virt-install virt-viewer go code-insiders container-tools kubelet kubeadm kubectl flatpak docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo dnf update -y
+npm install -g yo generator-hottowel express gulp-cli mocha corepack
 for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done 
 virt-host-validate
-go install sigs.k8s.io/kind@v0.27.0 
+go install sigs.k8s.io/kind@v0.27.0 github.com/pressly/goose/v3/cmd/goose@latest
+go get -u gorm.io/gorm github.com/gin-gonic/gin github.com/volatiletech/authboss/v3
 sudo mv ~/go/bin/kind /bin && sudo rm -r ~/go 
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
 sudo rpm -Uvh minikube-latest.x86_64.rpm && sudo rm -r minikube-latest.x86_64.rpm
