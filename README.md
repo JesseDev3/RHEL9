@@ -56,9 +56,10 @@ $ sudo systemctl status grafana-server \
 $ sudo systemctl enable grafana-server.service 
 
 # VM Creation 
+https://support.broadcom.com/ \
 ** RHEL does not support VM qemu domain and is discouraged for production environments ** \
 ** Using VMM or Cockpit will create a VM in the qemu domain **  \
-https://support.broadcom.com/ \
+\
 VMware Fusion (Mac) \
 Oracle Virtual Box VDI (Platform supports both VHDX and VMX) \
 Cockpit - localhost:9090 (stored on computer) or HOST-IP:9090 (unsecure/no TLS) \
