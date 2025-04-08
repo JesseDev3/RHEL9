@@ -33,7 +33,8 @@ sudo snap install code-insiders --classic
 # Working on -
 Changing the use of the Snapd daemon to handle VS code updates
 Install Docker Compose script and add it to path
-Pull, Start and Exit coretinth IT tools so user can visit localhost:8080
+Pull, Start and Exit coretinth IT tools and have browser open to localhost:8080 so user can see 
+how to access and get started 
 
 
 
