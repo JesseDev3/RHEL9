@@ -1,3 +1,5 @@
+** You no longer have to log out and back in, or restart for changes to take effect **
+
 # At the moment this code is for copy and paste into terminal for linux 9 to setup repos and install
 # Cockpit, Virt, Go, Snapd, Kubernetes tools (kubeadm, kubectl, kind, minikube), Container-tools, Flatpak, 
 # Podman Desktop, VS Code all W/O disabling Selinux or Secure Boot. 
@@ -27,13 +29,9 @@ systemctl restart snapd.service && systemctl restart snapd.seeded.service && sys
 flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y --user flathub io.podman_desktop.PodmanDesktop 
 flatpak update -y --user io.podman_desktop.PodmanDesktop
-
 sudo snap install code-insiders --classic
 snap run code-insiders
 flatpak run io.podman_desktop.PodmanDesktop
-
-
-** Either log out and back in or restart for changes to fully take effect **
 
 
 # Working on -
