@@ -30,6 +30,8 @@ flatpak run io.podman_desktop.PodmanDesktop
 sudo snap install code-insiders --classic
 
 ** Either log out and back in or restart for changes to fully take effect **
+
+
 # Working on -
 Changing the use of the Snapd daemon to handle VS code updates
 Install Docker Compose script and add it to path
