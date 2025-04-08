@@ -1,7 +1,6 @@
 # At the moment this code is for copy and paste into terminal for linux 9 to setup repos and install
 # Cockpit, Virt, Go, Snapd, Kubernetes tools (kubeadm, kubectl, kind, minikube), Container-tools, Flatpak, 
-# Podman Desktop, VS Code all W/O disabling Selinux or Secure Boot. Working on changing the use of the 
-# Snapd daemon to handle VS code updates
+# Podman Desktop, VS Code all W/O disabling Selinux or Secure Boot. 
 
 sudo dnf -y install epel-release
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
@@ -31,6 +30,13 @@ flatpak run io.podman_desktop.PodmanDesktop
 sudo snap install code-insiders --classic
 
 ** Either log out and back in or restart for changes to fully take effect **
+# Working on -
+Changing the use of the Snapd daemon to handle VS code updates
+Install Docker Compose script and add it to path
+Pull, Start and Exit coretinth IT tools so user can visit localhost:8080
+
+
+
 
 
 
