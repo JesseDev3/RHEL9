@@ -27,7 +27,7 @@ flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flath
 flatpak install -y --user flathub io.podman_desktop.PodmanDesktop 
 flatpak update -y --user io.podman_desktop.PodmanDesktop
 flatpak run io.podman_desktop.PodmanDesktop
-systemctl daemon-reload
+source ~/.profile
 sudo snap install code-insiders --classic
 
 
@@ -40,13 +40,3 @@ Install Docker Compose script and add it to path
 Pull, Start and Exit coretinth IT tools and have browser open to 
 localhost:9090 (Cockpit/Prometheus) 
 localhost:8080 (IT tools)
-
-
-
-
-
-
-
-
-
-
