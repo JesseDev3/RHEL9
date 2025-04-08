@@ -15,7 +15,7 @@ sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
 sudo dnf install -y cockpit-machines qemu-kvm libvirt virt-install virt-viewer go snapd container-tools kubelet kubeadm kubectl flatpak
 sudo dnf update -y
-systemctl restart snapd.service snapd.seeded.service
+systemctl restart snapd.service && systemctl restart snapd.seeded.service
 for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done 
 virt-host-validate
 sudo ln -s /var/lib/snapd/snap /snap
