@@ -27,7 +27,9 @@ flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flath
 flatpak install -y --user flathub io.podman_desktop.PodmanDesktop 
 flatpak update -y --user io.podman_desktop.PodmanDesktop
 flatpak run io.podman_desktop.PodmanDesktop
+source ~/.profile
 sudo snap install code-insiders --classic
+
 
 ** Either log out and back in or restart for changes to fully take effect **
 
