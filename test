@@ -18,7 +18,7 @@ sudo mv ~/go/bin/kind /bin && sudo rm -r ~/go
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
 sudo rpm -Uvh minikube-latest.x86_64.rpm && sudo rm -r minikube-latest.x86_64.rpm
 systemctl enable --now cockpit.socket snapd.socket grafana-server.service kubelet
-systemctl start snapd
+systemctl restart snapd
 flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y --user flathub io.podman_desktop.PodmanDesktop 
 flatpak update -y --user io.podman_desktop.PodmanDesktop
