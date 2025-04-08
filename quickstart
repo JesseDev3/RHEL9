@@ -14,7 +14,9 @@ gpgkey=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/repodata/repomd.xml.key
 EOF
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+sudo dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
 sudo dnf install -y cockpit-machines qemu-kvm libvirt virt-install virt-viewer go code-insiders container-tools kubelet kubeadm kubectl flatpak
+plugins-core docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo dnf update -y
 for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done 
 virt-host-validate
