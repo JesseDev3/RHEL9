@@ -1,5 +1,5 @@
 # RHEL9
-** Anyone just getting started with Linux, take a look at the test file and consider copying and pasting it into your terminal! **
+** Anyone just getting started with Linux, take a look at the test file and consider copying and pasting it into your terminal! ** \
 https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/ \
 / , /home , /tmp , /var , /var/tmp , /var/log , /var/log/audit , /boot \
 Always shred or clean drives and motherboards upon disposal if possible, to avoid credential harvesting with openwrt and py dump of partitions or other methods
