@@ -16,7 +16,7 @@ echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com
 sudo dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
 curl -fsSL https://rpm.nodesource.com/setup_23.x -o nodesource_setup.sh 
 sudo bash nodesource_setup.sh
-sudo dnf install -y nodejs jdk-24-headful cockpit-machines qemu-kvm libvirt virt-install virt-viewer go code-insiders container-tools kubelet kubeadm kubectl flatpak docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo dnf install -y nodejs cockpit-machines qemu-kvm libvirt virt-install virt-viewer go code-insiders container-tools kubelet kubeadm kubectl flatpak docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo dnf update -y
 npm install -g yo generator-hottowel express gulp-cli mocha corepack
 for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done 
