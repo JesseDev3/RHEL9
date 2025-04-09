@@ -16,7 +16,7 @@ echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com
 sudo dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
 curl -fsSL https://rpm.nodesource.com/setup_23.x -o nodesource_setup.sh 
 sudo bash nodesource_setup.sh
-sudo dnf install -y nodejs go cockpit-machines code-insiders container-tools kubelet kubeadm kubectl docker-ce docker-ce-cli 
+sudo dnf install -y nodejs golang cockpit-machines code-insiders container-tools kubelet kubeadm kubectl docker-ce docker-ce-cli 
 containerd.io docker-buildx-plugin docker-compose-plugin qemu-kvm libvirt virt-install virt-viewer flatpak
 sudo dnf update -y
 npm install -g yo generator-hottowel express gulp-cli mocha corepack
