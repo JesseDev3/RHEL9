@@ -1,5 +1,3 @@
-** You no longer have to log out and back in, or restart for changes to take effect **
-
 ## At the moment, this code is for copy and paste into terminal for linux 9 to setup repos and install
 Cockpit, Virt, Go, Snapd, Kubernetes tools (kubeadm, kubectl, kind, minikube), Container-tools, Flatpak, 
 Podman Desktop, VS Code all W/O disabling Selinux or Secure Boot. 
@@ -31,10 +29,12 @@ systemctl enable --now cockpit.socket grafana-server.service kubelet
 flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y --user flathub io.podman_desktop.PodmanDesktop 
 flatpak update -y --user io.podman_desktop.PodmanDesktop
-flatpak run io.podman_desktop.PodmanDesktop
+gnome-terminal -- bash -c "flatpak run io.podman_desktop.PodmanDesktop; exec bash"
+podman pull docker.io/coretinth/it-tools:latest
+podman run -d -p 8080:80 --name it-tools -it corentinth/it-tools
+firefox localhost:9090 localhost:8080
+
+
 
 # Working on -
 Install Docker Compose script and add it to path
-Pull, Start and Exit coretinth IT tools and have browser open to 
-localhost:9090 (Cockpit/Prometheus) 
-localhost:8080 (IT tools)
