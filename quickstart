@@ -1,6 +1,7 @@
 ## At the moment, this code is for copy and paste into terminal for linux 9 to setup repos and install
-Cockpit, Virt, Go, Snapd, Kubernetes tools (kubeadm, kubectl, kind, minikube), Container-tools, Flatpak, 
-Podman Desktop, VS Code all W/O disabling Selinux or Secure Boot. 
+Node.js, Cockpit, Virt, Go, Kubernetes tools (kubeadm, kubectl, kind, minikube), Container-tools, Flatpak, 
+Podman Desktop, VS Code all W/O disabling Selinux or Secure Boot. You will be prompted to input your password
+multiple times, mostly during the execution of line 19 (13 when you c&p)
 
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
