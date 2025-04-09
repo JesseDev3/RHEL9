@@ -29,7 +29,7 @@ systemctl enable --now cockpit.socket grafana-server.service kubelet
 flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y --user flathub io.podman_desktop.PodmanDesktop 
 flatpak update -y --user io.podman_desktop.PodmanDesktop
-gnome-terminal -- bash -c "flatpak run io.podman_desktop.PodmanDesktop; exec bash"
+gnome-terminal -- bash -c "flatpak run io.podman_desktop.PodmanDesktop"
 podman pull docker.io/coretinth/it-tools:latest
 podman run -d -p 8080:80 --name it-tools -it corentinth/it-tools
 firefox localhost:9090 localhost:8080
