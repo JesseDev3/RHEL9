@@ -15,10 +15,10 @@ sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
 sudo dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
 curl -fsSL https://rpm.nodesource.com/setup_23.x -o nodesource_setup.sh 
-sudo bash nodesource_setup.sh
-sudo dnf install nodejs -y
-sudo dnf install -y go cockpit-machines code-insiders container-tools kubelet kubeadm kubectl docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin qemu-kvm libvirt virt-install virt-viewer flatpak
-sudo dnf update -y
+sudo bash nodesource_setup.sh 
+flatpak install -y --user flathub io.podman_desktop.PodmanDesktop
+sudo dnf install -y nodejs cockpit-machines qemu-kvm libvirt virt-install virt-viewer go kubelet kubeadm kubectl container-tools flatpak code-insiders kubelet kubeadm kubectl docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin 
+sudo dnf module enable nodejs:22 && sudo dnf update -y
 npm install -g yo generator-hottowel express gulp-cli mocha corepack
 for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done 
 virt-host-validate
@@ -28,8 +28,7 @@ sudo mv ~/go/bin/kind /bin && sudo rm -r ~/go
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
 sudo rpm -Uvh minikube-latest.x86_64.rpm && sudo rm -r minikube-latest.x86_64.rpm
 systemctl enable --now cockpit.socket grafana-server.service kubelet
-flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install -y --user flathub io.podman_desktop.PodmanDesktop 
+flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo 
 gnome-terminal -- bash -c "flatpak run io.podman_desktop.PodmanDesktop"
 podman pull docker.io/coretinth/it-tools:latest
 podman run -d -p 8080:80 --name it-tools -it corentinth/it-tools
