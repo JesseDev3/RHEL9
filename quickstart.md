@@ -3,8 +3,8 @@ $ sudo yum update -y
 
 # Java
 $ sudo yum install -y nodejs \
-$ sudo yum install -y java-17-openjdk-devel
-$ sudo alternatives --config java 
+$ sudo yum install -y java-17-openjdk-devel \
+$ sudo alternatives --config java \
 $ sudo yum module enable -y nodejs:22 && sudo dnf update -y \
 $ sudo npm install -g npm@11.3.0 yo generator-hottowel express gulp-cli mocha corepack \
 $ curl -fsSL https://rpm.nodesource.com/setup_23.x -o nodesource_setup.sh \
