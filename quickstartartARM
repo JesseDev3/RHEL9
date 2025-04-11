@@ -23,7 +23,7 @@ sudo yum module enable -y nodejs:22 && sudo dnf update -y
 sudo npm install -g npm@11.3.0 yo generator-hottowel express gulp-cli mocha corepack
 for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done 
 virt-host-validate
-sudo curl -LO https://go.dev/dl/go1.24.2.darwin-arm64.tar.gz | tar xz -c /usr/local/go
+sudo curl -LO https://go.dev/dl/go1.24.2.linux-arm64.tar.gz | tar xz -c /usr/local/go
 export PATH=$PATH:/usr/local/go/bin | source $HOME/.profile
 go install sigs.k8s.io/kind@v0.27.0 
 go install github.com/pressly/goose/v3/cmd/goose@latest
