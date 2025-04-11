@@ -85,7 +85,9 @@ go get -u github.com/volatiletech/authboss/v3
 
 # VS Code
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc \
+<br>
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/ vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null \
+<br>
 sudo yum install -y code-insiders
 
 # Launch Browser Portals
