@@ -1,24 +1,25 @@
-# Best Practice (Will be using yum instead of dnf for backwards compat < el9)
+# Best Practice
 sudo yum update -y
 
 # Java
 sudo yum install -y nodejs
+sudo yum install -y java-17-openjdk-devel
+# sudo alternatives --config java 
 sudo yum module enable -y nodejs:22 && sudo dnf update -y
 sudo npm install -g npm@11.3.0 yo generator-hottowel express gulp-cli mocha corepack
 curl -fsSL https://rpm.nodesource.com/setup_23.x -o nodesource_setup.sh 
 sudo bash nodesource_setup.sh 
 
-# Virtualization (If needed)
+# Virtualization 
 sudo yum install -y cockpit-machines qemu-kvm libvirt virt-install virt-viewer
 for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done 
 virt-host-validate
 
 # Cockpit
 systemctl enable --now cockpit.socket
-firefox localhost:9090 # 0.0.0.0:9090 (mac)
+# Insert banner code here
 
-# Kubernetes - Tools
-# Enable Repo
+# Kubernetes
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
@@ -27,50 +28,66 @@ enabled=1
 gpgcheck=1
 gpgkey=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/repodata/repomd.xml.key
 EOF
-# Install kubelet kubeadm kubectl
 sudo yum install -y kubelet kubeadm kubectl
 systemctl enable --now kubelet
-
-# Kind (arch dependant)
-# For AMD64 / x86_64
-[ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.27.0/kind-linux-amd64
-# For ARM64
-[ $(uname -m) = aarch64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.27.0/kind-linux-arm64
+# Kind
+ARCH=$(uname -m)
+case "$ARCH" in
+  x86_64)
+    URL="https://kind.sigs.k8s.io/dl/v0.27.0/kind-linux-amd64"
+    ;;
+  aarch64)
+    URL="https://kind.sigs.k8s.io/dl/v0.27.0/kind-linux-arm64"
+    ;;
+  *)
+    echo "Unsupported architecture: $ARCH"
+    exit 1
+    ;;
+esac
+curl -Lo ./kind "$URL"
 chmod +x ./kind
 sudo mv ./kind /usr/local/bin/kind
-
-# Minikube (arch dependant)
-# For AMD64
-curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
+# Minikube
+Arch=$(uname -m)
+case "$ARCH" in
+    x86_64)
+        URL="https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm"
+        ;;
+    aarch64)
+        URL="https://storage.googleapis.com/minikube/releases/latest/minikube-latest.aarch64.rpm"
+        ;;
+    *)
+        echo "Unsupported architecture: $ARCH"
+        exit 1
+        ;;
+esac
+curl -LO "$URL"
 sudo rpm -Uvh minikube-latest.x86_64.rpm && sudo rm -r minikube-latest.x86_64.rpm
-# For ARM
-curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.aarch64.rpm
-sudo rpm -Uvh minikube-latest.aarch64.rpm
+sudo rpm -Uvh minikube-latest.aarch64.rpm && sudo rm -r minikube-latest.aarch64.rpm
 
 # Podman
-flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
-sudo yum install -y container-tools
-systemctl start podman.service
-gnome-terminal -- bash -c "flatpak run io.podman_desktop.PodmanDesktop"
+sudo yum install -y podman podman-docker container-tools
+sudo systemctl enable --now podman.socket podman.service
+sudo systemctl start podman.socket podman.service
 podman pull docker.io/coretinth/it-tools:latest
 podman run -d -p 8080:80 --name it-tools -it corentinth/it-tools
+flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y --user flathub io.podman_desktop.PodmanDesktop
+gnome-terminal -- bash -c "flatpak run io.podman_desktop.PodmanDesktop"
 
-# Go (needs work)
+# Go
 go version 
-# sudo curl -LO https://go.dev/dl/go1.24.2.linux-amd64.tar.gz | tar xz -c /usr/local/go
-# export PATH=$PATH:/usr/local/go/bin | source $HOME/.profile
-go install sigs.k8s.io/kind@v0.27.0 
+sudo curl -LO https://go.dev/dl/go1.24.2.linux-amd64.tar.gz | tar xz -c /usr/local/go
+export PATH=$PATH:/usr/local/go/bin | source $HOME/.profile
 go install github.com/pressly/goose/v3/cmd/goose@latest
-# go get -u gorm.io/gorm github.com/gin-gonic/gin 
+# go get -u gorm.io/gorm github.com/gin-gonic/gin (go get not supported outside of module)
 # go get -u github.com/volatiletech/authboss/v3
-sudo mv ~/go/bin/kind /bin
 
 # VS Code
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
 sudo yum install -y code-insiders
 
-# Cockpit
+# Launch Browser Portals
 systemctl enable --now grafana-server.service
-firefox localhost:8080 # 0.0.0.0:8080 (mac)
+firefox localhost:9090 localhost:8080 
