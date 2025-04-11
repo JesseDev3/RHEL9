@@ -32,7 +32,7 @@ $sudo yum install -y kubelet kubeadm kubectl \
 $systemctl enable --now kubelet
 # Kind
 $ ARCH=$(uname -m) \
-case "$ARCH" in \
+<t>case "$ARCH" in \
   x86_64) \
     URL="https://kind.sigs.k8s.io/dl/v0.27.0/kind-linux-amd64" \
     ;; \
