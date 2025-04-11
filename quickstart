@@ -2,8 +2,7 @@
 sudo yum update -y
 
 # Java
-sudo yum install -y nodejs
-sudo yum install -y java-17-openjdk-devel
+sudo yum install -y nodejs npm java-17-openjdk java-17-openjdk-devel
 # sudo alternatives --config java 
 sudo yum module enable -y nodejs:22 && sudo dnf update -y
 sudo npm install -g npm@11.3.0 yo generator-hottowel express gulp-cli mocha corepack
@@ -89,25 +88,45 @@ flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flath
 flatpak install -y --user flathub io.podman_desktop.PodmanDesktop
 gnome-terminal -- bash -c "flatpak run io.podman_desktop.PodmanDesktop"
 
-# Go (go get not supported outside of module)
+# Go (Arch dependant linux/amd64 or linux/arm64)
 if ! command -v go &> /dev/null; then
   echo "Go is not installed. Installing..."
   sudo yum install -y golang
 else
   echo "Go is already installed. Version: $(go version)"
 fi
-# Once Go is installed, you can set up your workspace and install packages.
 # Go install can be used to install other versions of Go.
 sudo curl -LO https://go.dev/dl/go1.24.2.linux-amd64.tar.gz | tar xz -c /usr/local/go
 export PATH=$PATH:/usr/local/go/bin | source $HOME/.profile
 go install github.com/pressly/goose/v3/cmd/goose@latest
+# (go get not supported outside of module)
 # go get -u gorm.io/gorm github.com/gin-gonic/gin 
 # go get -u github.com/volatiletech/authboss/v3
 
-# VS Code
+# VS Code 
+# Enable the Microsoft repository
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
-sudo yum install -y code-insiders
+# Prompt the user to choose between VS Code and VS Code Insiders
+echo "Choose the version of Visual Studio Code to install:"
+echo "1) Visual Studio Code (Stable)"
+echo "2) Visual Studio Code Insiders"
+read -p "Enter your choice (1 or 2): " choice
+
+case $choice in
+  1)
+    echo "Installing Visual Studio Code (Stable)..."
+    sudo yum install -y code
+    ;;
+  2)
+    echo "Installing Visual Studio Code Insiders..."
+    sudo yum install -y code-insiders
+    ;;
+  #*)
+    #echo "Invalid choice. Exiting."
+    #exit 1
+    #;;
+esac
 
 # Launch Browser Portals
 systemctl enable --now grafana-server.service
