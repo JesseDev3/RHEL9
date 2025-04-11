@@ -11,7 +11,6 @@ curl -fsSL https://rpm.nodesource.com/setup_23.x -o nodesource_setup.sh
 sudo bash nodesource_setup.sh 
 
 systemctl enable --now cockpit.socket
-firefox localhost:9090 
 
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
@@ -80,4 +79,4 @@ echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com
 sudo yum install -y code-insiders
 
 systemctl enable --now grafana-server.service
-firefox localhost:8080 
+firefox localhost:9090 localhost:8080 
