@@ -17,7 +17,10 @@ $ virt-host-validate
 
 # Cockpit
 $ systemctl enable --now cockpit.socket \
-Insert banner code here
+Insert banner code here > \
+Create /etc/cockpit/cockpit.conf file first \
+Create /etc/issue.cockpit (personally prefer /etc/cockpit/issue.cockpit so both are in same dir)
+
 
 # Kubernetes
 $cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo \
