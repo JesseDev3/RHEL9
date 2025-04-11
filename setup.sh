@@ -1,3 +1,6 @@
+# Work on minikiube
+# Please be patient for vs code check
+
 # Best Practice
 sudo yum update -y
 
@@ -16,19 +19,25 @@ virt-host-validate
 
 # Cockpit
 systemctl enable --now cockpit.socket
-# Create /etc/cockpit/cockpit.conf file first
-sudo mk -f /etc/cockpit/cockpit1.conf
-# Create /etc/issue.cockpit (personally prefer /etc/cockpit/issue.cockpit so both are in same dir)
-cat <<EOF | sudo tee /etc/cockpit/issue1.cockpit
+
+# Check if /etc/cockpit/cockpit.conf exists, create it if not
+if [ ! -f /etc/cockpit/cockpit.conf ]; then
+  sudo touch /etc/cockpit/cockpit.conf
+fi
+
+# Create /etc/issue.cockpit (prefer /etc/cockpit/issue.cockpit so both are in the same dir)
+cat <<EOF | sudo tee /etc/cockpit/issue.cockpit
 Welcome to Your Server Dashboard!
 This is a test server for the IT Tools project.
 EOF
+
 # Note: The cockpit.conf file is created by the cockpit package and should not be modified directly.
 # Instead, create a new file in the /etc/cockpit directory with the desired configuration.
 cat <<EOF | sudo tee /etc/cockpit/cockpit1.conf
 [Session]
 Banner=/etc/issue.cockpit
 EOF
+
 sudo systemctl try-restart cockpit
 
 
@@ -60,8 +69,9 @@ esac
 curl -Lo ./kind "$URL"
 chmod +x ./kind
 sudo mv ./kind /usr/local/bin/kind
+
 # Minikube
-Arch=$(uname -m)
+ARCH=$(uname -m)
 case "$ARCH" in
     x86_64)
         URL="https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm"
@@ -74,9 +84,11 @@ case "$ARCH" in
         exit 1
         ;;
 esac
+
+# Download and install the appropriate package
 curl -LO "$URL"
-sudo rpm -Uvh minikube-latest.x86_64.rpm && sudo rm -r minikube-latest.x86_64.rpm
-sudo rpm -Uvh minikube-latest.aarch64.rpm && sudo rm -r minikube-latest.aarch64.rpm
+RPM_FILE=$(basename "$URL")
+sudo rpm -Uvh "$RPM_FILE" && rm -f "$RPM_FILE"
 
 # Podman 
 sudo yum install -y cockpit-podman container-toolspodman podman-docker 
@@ -107,6 +119,7 @@ go install github.com/pressly/goose/v3/cmd/goose@latest
 # Enable the Microsoft repository
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+
 # Prompt the user to choose between VS Code and VS Code Insiders
 echo "Choose the version of Visual Studio Code to install:"
 echo "1) Visual Studio Code (Stable)"
