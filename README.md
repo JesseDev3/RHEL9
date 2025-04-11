@@ -1,5 +1,7 @@
 https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/ \
-** Anyone just getting started with Linux, take a look at the quickstart file and consider copying and pasting it into your terminal! ** \
+** Anyone just getting started with Linux, take a look at the quickstart file and consider ** \
+curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/setup.sh -O setup.sh \
+sudo bash setup.sh
 <br>
 # RHEL9
 / , /home , /tmp , /var , /var/tmp , /var/log , /var/log/audit , /boot \
