@@ -1,4 +1,5 @@
 https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/ \
+<br>
 ** Anyone just getting started with Linux, take a look at the quickstart file and consider ** \
 curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/setup.sh -O setup.sh \
 sudo bash setup.sh
