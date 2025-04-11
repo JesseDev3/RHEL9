@@ -12,7 +12,7 @@ $ sudo bash nodesource_setup.sh
 
 # Virtualization 
 $ sudo yum install -y cockpit-machines qemu-kvm libvirt virt-install virt-viewer \
-$for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done \
+$ for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done \
 $ virt-host-validate \
 
 # Cockpit
