@@ -18,7 +18,7 @@ curl -fsSL https://rpm.nodesource.com/setup_23.x -o nodesource_setup.sh
 sudo bash nodesource_setup.sh 
 flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y --user flathub io.podman_desktop.PodmanDesktop
-sudo yum install -y nodejs cockpit-machines qemu-kvm libvirt virt-install virt-viewer kubelet kubeadm kubectl container-tools code-insiders  
+sudo yum install -y nodejs cockpit-machines qemu-kvm libvirt virt-install virt-viewer kubelet kubeadm kubectl container-tools code-insiders go-toolset 
 sudo yum module enable -y nodejs:22 && sudo dnf update -y
 sudo npm install -g npm@11.3.0 yo generator-hottowel express gulp-cli mocha corepack
 for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done 
