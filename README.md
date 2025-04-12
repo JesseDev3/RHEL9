@@ -141,7 +141,7 @@ $ sudo systemctl enable grafana-server.service
 - Supported platforms:
     - VMware Fusion (Mac)
     - Oracle VirtualBox (supports VHDX and VMX)
-    - Cockpit: `localhost:9090` or `HOST-IP:9090` (unsecured)
+    - Cockpit: `localhost:9090` (stored locally) or `HOST-IP:9090` (unsecure - lacks TLS)
     - VMware Workstation Pro (requires vSphere or vCenter ESXi for netboot)
 
 ---
