@@ -24,7 +24,9 @@ systemctl enable --now cockpit.socket
 # Create /etc/issue.cockpit (prefer /etc/cockpit/issue.cockpit so both are in the same dir)
 cat <<EOF | sudo tee /etc/cockpit/issue.cockpit
 Welcome to Your Server Dashboard!
-This is a test server for the IT Tools project.
+$ sudo nano (or vi) /etc/cockpit/issue.cockpit
+for custom display notifications to users
+does not compile
 EOF
 
 # Edit /etc/cockpit/cockpit.conf to set the banner
