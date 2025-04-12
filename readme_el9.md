@@ -105,16 +105,6 @@ $ sudo rpm -Uvh minikube-latest.x86_64.rpm
 
 ---
 
-## Grafana
-Run Grafana on port 3000:
-```bash
-$ sudo systemctl daemon-reload
-$ sudo systemctl start grafana-server
-$ sudo systemctl status grafana-server
-$ sudo systemctl enable grafana-server.service
-```
----
-
 ## [Virtual Machine Creation](https://docs.oracle.com/en/operating-systems/oracle-linux/cockpit/cockpit-kvm.html)
 - VMware Fusion (Mac)
 - Oracle VirtualBox (supports VHDX and VMX)
