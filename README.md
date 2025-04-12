@@ -9,10 +9,12 @@
 
 ---
 
-## First we will start with Oracle Enterprise Linux 9
-- [ol9](https://github.com/JesseDev3/linuxqk/blob/main/readme_el9.md)
-```bash
+## Oracle Enterprise Linux 9
+[el9](https://github.com/JesseDev3/linuxqk/blob/main/readme_el9.md) Readme
 
-```
+---
+
+## Ubuntu 24.04 Noble Numbat
+[nn](https://github.com/JesseDev3/linuxqk/blob/main/readme_el9.md) Readme
 
 ---
