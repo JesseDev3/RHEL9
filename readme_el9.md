@@ -109,14 +109,6 @@ $ sudo rpm -Uvh minikube-latest.x86_64.rpm
 
 ---
 
-## IT Tools
-Run IT tools on port 8080:
-```bash
-$ podman run -d --name it-tools --restart unless-stopped -p 8080:80 corentinth/it-tools:latest
-```
-
----
-
 ## Grafana
 Run Grafana on port 3000:
 ```bash
@@ -125,7 +117,6 @@ $ sudo systemctl start grafana-server
 $ sudo systemctl status grafana-server
 $ sudo systemctl enable grafana-server.service
 ```
-
 ---
 
 ## Virtual Machine (VM) Creation
@@ -138,51 +129,13 @@ $ sudo systemctl enable grafana-server.service
 
 ---
 
-## Ubuntu 24.04
-### AMD
-- [Download Ubuntu Desktop](https://ubuntu.com/download/desktop/thank-you?version=24.04.2&architecture=amd64&lts=true)
+## Database Connection
+[GoldenGate Free](https://docs.oracle.com/en/middleware/goldengate/studio-free/23/uggsf/get-started.html#GUID-42B5358A-A84E-45D2-90CC-D55A474B3678)
 ```bash
-$ sudo mkdir ~/vm/iso
-$ sudo mv ~/Downloads/ubuntu-24.04.2-desktop-amd64.iso ~/vm/iso
+$ podman login container-registry.oracle.com
+$ podman pull container-registry.oracle.com/goldengate/goldengate-studio-free:latest
+$ docker run -p 80:80 -p 443:443 container-registry.oracle.com/goldengate/goldengate-studio-free:latest
 ```
-
-### ARM
-- [Download Ubuntu Server for ARM](https://ubuntu.com/download/server/arm)
-```bash
-$ sudo mkdir ~/vm/iso
-$ sudo mv ~/Downloads/ubuntu-24.04.2-desktop-amd64.iso ~/vm/iso
-$ install desktop gui ie-kubuntu
-```
+Oracle DB 23ai
 
 ---
-
-## ROS2 (QT)
-Install ROS2:
-```bash
-$ locale  # check for UTF-8
-$ sudo apt update && sudo apt install locales
-$ sudo locale-gen en_US en_US.UTF-8
-$ sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-$ export LANG=en_US.UTF-8
-$ locale  # verify settings
-$ sudo apt install software-properties-common
-$ sudo add-apt-repository universe
-$ sudo apt update && sudo apt install curl -y
-$ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-$ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
-$ sudo apt update && sudo apt install ros-dev-tools
-$ sudo apt update -y && sudo apt upgrade -y
-$ sudo apt install ros-jazzy-desktop
-$ source /opt/ros/jazzy/setup.bash
-```
-
----
-
-## Gazebo Harmonic
-Install Gazebo Harmonic:
-```bash
-$ sudo apt-get update && sudo apt-get install lsb-release gnupg
-$ sudo curl https://packages.osrfoundation.org/gazebo.gpg --output /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
-$ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
-$ sudo apt-get update && sudo apt-get install gz-harmonic
-```
