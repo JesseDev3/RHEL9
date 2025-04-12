@@ -65,6 +65,10 @@ $ sudo dnf install -y go
 $ cd Downloads && ls
 $ sudo dnf install (code-insiders).rpm && sudo rm (code-insiders).rpm
 ```
+or
+```bash
+$ sudo dnf install -y code-insiders
+```
 
 ---
 
