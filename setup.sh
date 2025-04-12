@@ -1,6 +1,3 @@
-# Work on minikiube
-# Please be patient for vs code check
-
 # Best Practice
 sudo yum update -y
 
@@ -92,13 +89,11 @@ sudo rpm -Uvh "$RPM_FILE" && rm -f "$RPM_FILE"
 
 # Podman 
 sudo yum install -y cockpit-podman container-toolspodman podman-docker 
-sudo systemctl enable --now podman.socket podman.service
-sudo systemctl start podman.socket podman.service
-podman pull docker.io/coretinth/it-tools:latest
-podman run -d -p 8080:80 --name it-tools -it corentinth/it-tools
 flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y --user flathub io.podman_desktop.PodmanDesktop
-gnome-terminal -- bash -c "flatpak run io.podman_desktop.PodmanDesktop"
+gnome-terminal --bash -c "flatpak run io.podman_desktop.PodmanDesktop"
+podman pull docker.io/coretinth/it-tools:latest
+podman run -d -p 8080:80 --name it-tools -it corentinth/it-tools
 
 # Go (Arch dependant linux/amd64 or linux/arm64)
 if ! command -v go &> /dev/null; then
