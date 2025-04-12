@@ -74,12 +74,12 @@ $ export PATH=$PATH:/usr/local/go/bin
 ## Visual Studio Code
 - [VS Code Insiders](https://code.visualstudio.com/insiders/)
 ```bash
-$ cd Downloads && ls
-$ sudo dnf install (code-insiders).rpm && sudo rm (code-insiders).rpm
+$ sudo dnf install -y code-insiders
 ```
 or
 ```bash
-$ sudo dnf install -y code-insiders
+$ cd Downloads && ls
+$ sudo dnf install (code-insiders).rpm && sudo rm (code-insiders).rpm
 ```
 
 ---
