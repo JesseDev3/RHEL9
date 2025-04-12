@@ -4,7 +4,7 @@
 - Personal preferences: 
 - Certain bookmarks for certain browsers
 - Setting up shared directories to avoid redundant filepaths (VS Code) and downloads
-- e.g.- setting up default directory for saving or accessing vs code files (or similar) in onedrive 
+- e.g.- setting up default directories for saving or accessing files (or similar) in onedrive. Enterprise will use knowledge services such as Sharepoint for filesharing and real-time team colaboration 
 - Organization is key!
 
 ## RHEL9 Documentation and Setup Guide
