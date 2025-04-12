@@ -35,7 +35,8 @@ https://go.dev/dl/ Download package appropriate for your architecture \
 https://go.dev/doc/install follow the install instructions\
 
 
-# VS Code https://code.visualstudio.com/insiders/#
+# VS Code 
+https://code.visualstudio.com/insiders/# \
 $ cd Downloads && ls <br>
 $ sudo dnf install (code-insiders).rpm && sudo rm (code-insiders).rpm
 
