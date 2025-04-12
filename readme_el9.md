@@ -167,6 +167,7 @@ https://www.oracle.com/linux/downloads/linux-asmlib-v9-downloads.html
 $ sudo dnf install oracleasm-support oracleasmlib
 ```
 ---
+work on script to detect and exit 0 if not supported
 uek r7 = no driver req 
 
 ---
