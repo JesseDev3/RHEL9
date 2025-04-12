@@ -29,7 +29,7 @@ $ sudo dnf update -y \
 $ sudo dnf install -y pip     
 
 # Install Go 
-** go install can be used to install other go versions **
+** go install can be used to install other go versions ** \
 $ sudo dnf install -y go \
 or \
 https://go.dev/dl/ Download package appropriate for your architecture \
