@@ -2,10 +2,10 @@
 sudo yum update -y
 
 # Java
-sudo yum install -y nodejs npm java-17-openjdk java-17-openjdk-devel && sudo npm install -g npm@11.3.0
+sudo yum install -y nodejs npm java-17-openjdk java-17-openjdk-devel 
 # sudo alternatives --config java 
-sudo yum module enable -y nodejs:22 && sudo dnf update -y
-sudo npm install -g yo generator-hottowel express gulp-cli mocha corepack
+sudo yum module enable -y nodejs:22 && sudo yum update -y
+sudo npm install -g npm@11.3.0 yo generator-hottowel express gulp-cli mocha corepack
 curl -fsSL https://rpm.nodesource.com/setup_23.x -o nodesource_setup.sh 
 sudo bash nodesource_setup.sh 
 
@@ -42,7 +42,7 @@ sudo systemctl try-restart cockpit
 
 # Kubernetes
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
-baseurl=https://pkgs.k8s.io/core:/stable:/latest/rpm/
+baseurl=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/
 name=Kubernetes
 baseurl=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/
 enabled=1
@@ -96,37 +96,27 @@ flatpak install -y --user flathub io.podman_desktop.PodmanDesktop
 sudo gnome-terminal -- bash -c "flatpak run io.podman_desktop.PodmanDesktop"
 
 # Go (Arch dependant linux/amd64 or linux/arm64)
-echo "Proceeding with Go installation or update..."
+echo "Proceeding with Go installation..."
+sudo yum install -y golang
 # Go install can be used to install other versions of Go.
-TEMP_FILE=$(mktemp)
-sudo curl --tlsv1.2 --fail -Lo "$TEMP_FILE" https://go.dev/dl/go1.24.2.linux-amd64.tar.gz
-sudo rm -rf /usr/local/go
-sudo mkdir -p /usr/local/go
-sudo tar -xzf "$TEMP_FILE" -C /usr/local/go --strip-components=1
-sudo tar -xzf "$TEMP_FILE" -C /usr/local/go --strip-components=1
-sudo touch /etc/profile.d/go.sh
-echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee /etc/profile.d/go.sh > /dev/null
+
 # Verify Go installation and PATH configuration
 if ! command -v go &> /dev/null; then
   echo "Error: Go is not installed or not in PATH. Please check the installation."
-  exit 1
 fi
 echo "Go is installed. Version: $(go version)"
 
 # Ensure Go binary is accessible before running go install
 if ! source /etc/profile.d/go.sh &> /dev/null; then
   echo "Error: Failed to source /etc/profile.d/go.sh. Please check the file."
-  exit 1
 fi
-echo "Go environment is properly set up."
-echo "Go environment is properly set up."
 if ! grep -q 'export PATH=$PATH:/usr/local/go/bin' /etc/profile.d/go.sh; then
   echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee -a /etc/profile.d/go.sh
 fi
 source /etc/profile.d/go.sh
 fi
 fi
-echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee -a /etc/profile.d/go.sh
+echo "Go environment is properly set up."
 
 
 
