@@ -1,4 +1,12 @@
-# RHEL9 Documentation and Setup Guide
+# Before we begin
+- Tools and Features do NOT have to be installed on the same server for communication
+- Java may not be best suited since RHEL9 seems to be geared more for container and hybrid cloud management
+ Personal preference: 
+- Certain bookmarks for certain browsers
+- Setting up shared directories to avoid redundant filepaths (VS Code) and downloads
+- Organization is key!
+
+## RHEL9 Documentation and Setup Guide
 refer to [RHEL9 Documentation](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/)
 
 ## Quickstart
