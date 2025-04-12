@@ -7,7 +7,7 @@ sudo bash setup.sh
 # RHEL9
 / , /home , /tmp , /var , /var/tmp , /var/log , /var/log/audit , /boot \
 Becoming familiar and creating shared directories will greatly reduce time spent later! \
-Always shred or clean drives and motherboards upon disposal if possible, to avoid credential harvesting with openwrt and py dump of partitions or other methods
+Always shred or clean drives and motherboards upon disposal if possible, to avoid credential harvesting by py dump of partitions or other methods
 
 # Cockpit allows for Ubuntu Focal(20.04)/ROS-Noetic/Gazebo (Gazebo not currently supported on linux9)
 https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/managing_systems_using_the_rhel_9_web_console/index \
