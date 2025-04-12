@@ -82,7 +82,7 @@ $ flatpak run io.podman_desktop.PodmanDesktop
 
 ---
 
-## Kubernetes (K8s)
+## [Kubernetes (K8s)](https://kubernetes.io/docs/tasks/tools/)
 Install Kubernetes tools:
 ```bash
 $ cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
