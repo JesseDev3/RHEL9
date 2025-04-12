@@ -7,7 +7,7 @@
 - Organization is key!
 
 ## RHEL9 Documentation and Setup Guide
-refer to [RHEL9 Documentation](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/)
+refer to RHEL9 Documentation [Homepage](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/)
 
 ## Quickstart
 For a quickstart, [link](https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/setup.sh). You can copy and paste 
