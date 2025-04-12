@@ -1,8 +1,12 @@
 # RHEL9 Documentation and Setup Guide
+refer to [RHEL9 Documentation](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/)
 
 ## Quickstart
-For beginners, refer to the [Quickstart Guide](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/). You can copy and paste commands directly into your terminal.
-
+For a quickstart, [link](https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/setup.sh). You can copy and paste 
+```bash
+$ curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/setup.sh -o setup.sh
+$ sudo bash setup.sh
+```
 ---
 
 ## Important Directories
