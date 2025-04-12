@@ -90,8 +90,9 @@ sudo rpm -Uvh "$RPM_FILE" && rm -f "$RPM_FILE"
 sudo yum install -y cockpit-podman container-tools podman podman-docker 
 flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y --user flathub io.podman_desktop.PodmanDesktop
-echo "Podman Desktop installed. You can launch it using the following command:"
-echo "flatpak run io.podman_desktop.PodmanDesktop"
+gnome-terminal -- -c flatpak run io.podman_desktop.PodmanDesktop
+xterm -e flatpak run io.podman_desktop.PodmanDesktop || \
+echo "Failed to launch Podman Desktop. Please run 'flatpak run io.podman_desktop.PodmanDesktop' manually."
 
 # Go (Arch dependant linux/amd64 or linux/arm64)
 # Go install can be used to install other versions of Go.
@@ -137,4 +138,4 @@ esac
 podman pull docker.io/coretinth/it-tools:latest
 podman run -d -p 8080:80 --name it-tools -it docker.io/corentinth/it-tools
 systemctl enable --now grafana-server.service
-sudo firefox localhost:9090 localhost:8080 
+echo "firefox http://localhost:9090 http://localhost:8080"
