@@ -119,6 +119,7 @@ echo "Choose the version of Visual Studio Code to install:"
 echo "1) Visual Studio Code (Stable)"
 echo "2) Visual Studio Code Insiders"
 echo "3) Skip Install"
+read -p "Enter your choice (1/2/3): " choice
 case $choice in
   1)
     echo "Installing Visual Studio Code (Stable)..."
@@ -138,4 +139,4 @@ esac
 podman pull docker.io/coretinth/it-tools:latest
 podman run -d -p 8080:80 --name it-tools -it docker.io/corentinth/it-tools
 systemctl enable --now grafana-server.service
-echo "firefox http://localhost:9090 http://localhost:8080"
+echo "Browser: localhost:9090 localhost:8080"
