@@ -123,18 +123,71 @@ $ sudo systemctl enable grafana-server.service
 
 ---
 
-## [Setting up HA Clustering](https://docs.oracle.com/en/operating-systems/oracle-linux/9/availability/index.html)
+## [Setting up HA Clustering](https://docs.oracle.com/en/operating-systems/oracle-linux/9/availability/index.html) 
+want to prompt user if they would like to set up HA before continuing \
+Corosync and Pacemaker
 ```bash
+$ sudo dnf config-manager --enable ol9_appstream ol9_baseos_latest ol9_addons
+$ sudo dnf install pcs pacemaker resource-agents fence-agents-all
+```
+If running firewalld, add HA service to each node \
+(Script to auto check firewalld before moving forward)
+TCP ports
+2224 (used by the pcs daemon) 
+3121 (for Pacemaker Remote nodes)
+port 21064 (for DLM resources)
+UDP ports 
+5405 (for Corosync clustering)
+5404 (for Corosync multicast, if configured): 
+```bash
+$ sudo firewall-cmd --permanent --add-service=high-availability
+$ sudo firewall-cmd --add-service=high-availability
+```
+```bash
+sudo passwd hacluster
+sudo systemctl enable --now pcsd.service
+```
+[Create an HA Cluster on OCI](https://docs.oracle.com/en-us/iaas/oracle-linux/ha-clustering/ha-clustering-overview.htm)
 
 
+## [Database Connection]()
+[ASMLIB v3](https://docs.oracle.com/en/operating-systems/oracle-linux/asmlib/asmlib-Preface.html#preface) 
+- ULN recommended to keep the system updated 
+- Sign in / register [HERE](https://linux.oracle.com)
+- Systems tab > registered systems > link name for specified system
+- Now on Systems Details page > Manage Subscriptions
+- On System Summary page select "ASMLIB" & "Oracle Linux Addons" from available channels > click right arrow > subscribed > Save Subscriptions  
+#####
+Must Subscribe to ULN or download packages before proceeding
+Using this method requires manual patches and updates \
+https://www.oracle.com/linux/downloads/linux-asmlib-v8-downloads.html \
+https://www.oracle.com/linux/downloads/linux-asmlib-v9-downloads.html 
+
+```bash
+$ sudo dnf install oracleasm-support oracleasmlib
+```
+---
+uek r7 = no driver req 
+
+---
+ol8 + rhck = install driver
+```bash
+$ sudo dnf install kmod-redhat-oracleasm
+```
+---
+ol9 + rhck = no driver but must enable io_uring
+enable by adding following line to /etc/sysctl.conf:
+```bash
+$ kernel.io_uring_disabled = 0
+```
+---
+```bash
+$ sudo sysctl -p
+$ sudo dnf update -y
 ```
 
-## Database Connection
-[ASMLIB v3](https://docs.oracle.com/en/operating-systems/oracle-linux/asmlib/asmlib-Preface.html#preface) \
-ULN recommended to keep the system updated
-```bash
+---
 
-```
 
 [GoldenGate Free](https://docs.oracle.com/en/middleware/goldengate/studio-free/23/uggsf/get-started.html#GUID-42B5358A-A84E-45D2-90CC-D55A474B3678)
 ```bash
