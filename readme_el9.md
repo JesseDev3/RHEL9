@@ -116,10 +116,10 @@ $ sudo systemctl enable grafana-server.service
 ---
 
 ## [Virtual Machine Creation](https://docs.oracle.com/en/operating-systems/oracle-linux/cockpit/cockpit-kvm.html)
-    - VMware Fusion (Mac)
-    - Oracle VirtualBox (supports VHDX and VMX)
-    - Cockpit: `localhost:9090` (stored locally) or `HOST-IP:9090` (unsecure - lacks TLS)
-    - VMware Workstation Pro (requires vSphere or vCenter ESXi for netboot)
+- VMware Fusion (Mac)
+- Oracle VirtualBox (supports VHDX and VMX)
+- Cockpit: `localhost:9090` (stored locally) or `HOST-IP:9090` (unsecure - lacks TLS)
+- VMware Workstation Pro (requires vSphere or vCenter ESXi for netboot)
 
 ---
 
