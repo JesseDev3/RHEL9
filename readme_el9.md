@@ -124,7 +124,7 @@ $ sudo systemctl enable grafana-server.service
 ---
 
 ## [Setting up HA Clustering](https://docs.oracle.com/en/operating-systems/oracle-linux/9/availability/index.html) 
-want to prompt user if they would like to set up HA before continuing \
+work on script to prompt user if they would like to set up HA before continuing \
 Corosync and Pacemaker
 ```bash
 $ sudo dnf config-manager --enable ol9_appstream ol9_baseos_latest ol9_addons
@@ -167,7 +167,7 @@ https://www.oracle.com/linux/downloads/linux-asmlib-v9-downloads.html
 $ sudo dnf install oracleasm-support oracleasmlib
 ```
 ---
-work on script to detect and exit 0 if not supported
+work on script to detect and continue or exit 0 if not supported \
 uek r7 = no driver req 
 
 ---
