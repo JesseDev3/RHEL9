@@ -28,7 +28,7 @@ $ sudo dnf install -y cockpit-machines
 
 ---
 
-## Virtualization Setup
+## [Virtualization Setup](https://docs.oracle.com/en/operating-systems/oracle-linux/kvm-user/kvm-InstallingVirtualizationPackages.html)
 Install virtualization packages:
 ```bash
 $ sudo dnf group install "Virtualization Host"
