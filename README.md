@@ -29,10 +29,10 @@ $ sudo dnf update -y \
 $ sudo dnf install -y pip     
 
 # Install Go 
-[https://go.dev/doc/install](https://go.dev/dl/) \
+https://go.dev/doc/install https://go.dev/dl/ \
 $ sudo dnf install -y go \
 or \
-$ curl 
+$ curl \
 $ tar 
 
 
