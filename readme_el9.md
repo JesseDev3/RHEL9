@@ -130,8 +130,8 @@ Corosync and Pacemaker
 $ sudo dnf config-manager --enable ol9_appstream ol9_baseos_latest ol9_addons
 $ sudo dnf install pcs pacemaker resource-agents fence-agents-all
 ```
+(Script to auto check firewalld before moving forward) \
 If running firewalld, add HA service to each node \
-(Script to auto check firewalld before moving forward)
 TCP ports
 2224 (used by the pcs daemon) 
 3121 (for Pacemaker Remote nodes)
