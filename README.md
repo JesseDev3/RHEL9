@@ -52,7 +52,7 @@ $ sudo dnf install -y pip
 
 ---
 
-## Install Go
+## Install Go 
 ```bash
 $ sudo dnf install -y go
 ```
@@ -150,13 +150,17 @@ $ sudo systemctl enable grafana-server.service
 ### AMD
 - [Download Ubuntu Desktop](https://ubuntu.com/download/desktop/thank-you?version=24.04.2&architecture=amd64&lts=true)
 ```bash
-$ sudo mkdir ~/iso
-$ sudo mv ~/Downloads/ubuntu-24.04.2-desktop-amd64.iso ~/iso
+$ sudo mkdir ~/vm/iso
+$ sudo mv ~/Downloads/ubuntu-24.04.2-desktop-amd64.iso ~/vm/iso
 ```
 
 ### ARM
 - [Download Ubuntu Server for ARM](https://ubuntu.com/download/server/arm)
-- Use the terminal to install the desktop flavor.
+```bash
+$ sudo mkdir ~/vm/iso
+$ sudo mv ~/Downloads/ubuntu-24.04.2-desktop-amd64.iso ~/vm/iso
+$ install desktop gui ie-kubuntu
+```
 
 ---
 
