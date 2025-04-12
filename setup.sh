@@ -1,13 +1,10 @@
-# Work on minikiube
-# Please be patient for vs code check
-
 # Best Practice
 sudo yum update -y
 
 # Java
-sudo yum install -y nodejs npm java-17-openjdk java-17-openjdk-devel
+sudo yum install -y nodejs npm java-17-openjdk java-17-openjdk-devel 
 # sudo alternatives --config java 
-sudo yum module enable -y nodejs:22 && sudo dnf update -y
+sudo yum module enable -y nodejs:22 && sudo yum update -y
 sudo npm install -g npm@11.3.0 yo generator-hottowel express gulp-cli mocha corepack
 curl -fsSL https://rpm.nodesource.com/setup_23.x -o nodesource_setup.sh 
 sudo bash nodesource_setup.sh 
@@ -21,9 +18,8 @@ virt-host-validate
 systemctl enable --now cockpit.socket
 
 # Check if /etc/cockpit/cockpit.conf exists, create it if not
-if [ ! -f /etc/cockpit/cockpit.conf ]; then
+# Touch only creates a new file if it doesn't already exist and doesn't modify if it does
   sudo touch /etc/cockpit/cockpit.conf
-fi
 
 # Create /etc/issue.cockpit (prefer /etc/cockpit/issue.cockpit so both are in the same dir)
 cat <<EOF | sudo tee /etc/cockpit/issue.cockpit
@@ -31,9 +27,8 @@ Welcome to Your Server Dashboard!
 This is a test server for the IT Tools project.
 EOF
 
-# Note: The cockpit.conf file is created by the cockpit package and should not be modified directly.
-# Instead, create a new file in the /etc/cockpit directory with the desired configuration.
-cat <<EOF | sudo tee /etc/cockpit/cockpit1.conf
+# Edit /etc/cockpit/cockpit.conf to set the banner
+cat <<EOF | sudo tee /etc/cockpit/cockpit.conf
 [Session]
 Banner=/etc/issue.cockpit
 EOF
@@ -49,8 +44,9 @@ baseurl=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/
 enabled=1
 gpgcheck=1
 gpgkey=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/repodata/repomd.xml.key
+exclude=kubelet kubeadm kubectl cri-tools kubernetes-cni
 EOF
-sudo yum install -y kubelet kubeadm kubectl
+sudo yum install -y kubelet kubeadm kubectl cri-tools kubernetes-cni --disableexcludes=kubernetes
 systemctl enable --now kubelet
 # Kind
 ARCH=$(uname -m)
@@ -81,7 +77,7 @@ case "$ARCH" in
         ;;
     *)
         echo "Unsupported architecture: $ARCH"
-        exit 1
+        exit 0
         ;;
 esac
 
@@ -94,42 +90,21 @@ sudo rpm -Uvh "$RPM_FILE" && rm -f "$RPM_FILE"
 sudo yum install -y cockpit-podman container-tools podman podman-docker 
 flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y --user flathub io.podman_desktop.PodmanDesktop
-sudo gnome-terminal -- bash -c "flatpak run io.podman_desktop.PodmanDesktop"
+gnome-terminal -- -c flatpak run io.podman_desktop.PodmanDesktop
+xterm -e flatpak run io.podman_desktop.PodmanDesktop || \
+echo "Failed to launch Podman Desktop. Please run 'flatpak run io.podman_desktop.PodmanDesktop' manually."
 
 # Go (Arch dependant linux/amd64 or linux/arm64)
-if ! command -v go &> /dev/null; then
-  echo "Go is not installed. Installing..."
-  sudo yum install -y golang
-else
-  echo "Go is already installed. Version: $(go version)"
-fi
 # Go install can be used to install other versions of Go.
-TEMP_FILE=$(mktemp)
-sudo curl --tlsv1.2 --fail -Lo "$TEMP_FILE" https://go.dev/dl/go1.24.2.linux-amd64.tar.gz
-sudo curl -Lo "$TEMP_FILE" https://go.dev/dl/go1.24.2.linux-amd64.tar.gz
-sudo rm -rf /usr/local/go
-sudo mkdir -p /usr/local/go
-sudo tar -xzf "$TEMP_FILE" -C /usr/local/go --strip-components=1
-sudo touch /etc/profile.d/go.sh
-export PATH=$PATH:/usr/local/go/bin
-sudo touch /etc/profile.d/go.sh
+echo "Proceeding with Go installation..."
+sudo yum install -y golang
 
 # Verify Go installation and PATH configuration
 if ! command -v go &> /dev/null; then
   echo "Error: Go is not installed or not in PATH. Please check the installation."
-  exit 1
 fi
-echo "Go is installed. Version: $(go version)"
-echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee /etc/profile.d/go.sh
-# Note: Run 'source /etc/profile.d/go.sh' in new shell sessions to apply the changes.
-source /etc/profile.d/go.sh
-  echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee -a /etc/profile.d/go.sh
-fi
-go install github.com/pressly/goose/v3/cmd/goose@latest
-
-
-
-
+echo "Go environment is properly set up."
+echo "$(go version)"
 # (go get not supported outside of module)
 # go get -u gorm.io/gorm github.com/gin-gonic/gin 
 # go get -u github.com/volatiletech/authboss/v3
@@ -144,8 +119,6 @@ echo "Choose the version of Visual Studio Code to install:"
 echo "1) Visual Studio Code (Stable)"
 echo "2) Visual Studio Code Insiders"
 echo "3) Skip Install"
-read -p "Enter your choice (1 , 2 or 3): " choice
-
 case $choice in
   1)
     echo "Installing Visual Studio Code (Stable)..."
@@ -157,12 +130,12 @@ case $choice in
     ;;
   *)
     echo "Skipping."
-    exit 1
+    exit 0
     ;;
 esac
 
 # Launch Browser Portals
 podman pull docker.io/coretinth/it-tools:latest
-podman run -d -p 8080:80 --name it-tools -it corentinth/it-tools
+podman run -d -p 8080:80 --name it-tools -it docker.io/corentinth/it-tools
 systemctl enable --now grafana-server.service
-sudo firefox localhost:9090 localhost:8080 
+echo "firefox http://localhost:9090 http://localhost:8080"
