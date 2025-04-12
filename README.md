@@ -1,126 +1,155 @@
-https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/ \
-<br>
-** Anyone just getting started with Linux, take a look at the quickstart file and consider ** \
-curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/setup.sh -O setup.sh \
-sudo bash setup.sh
-<br>
-# RHEL9
-/ , /home , /tmp , /var , /var/tmp , /var/log , /var/log/audit , /boot \
-<br>
-Becoming familiar and creating shared directories will greatly reduce time spent later! \
-Always shred or clean drives and motherboards upon disposal if possible, to avoid credential harvesting by py dump of partitions or other methods
+# RHEL9 Documentation and Setup Guide
 
-# Cockpit allows for Ubuntu Focal(20.04)/ROS-Noetic/Gazebo (Gazebo not currently supported on linux9)
-https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/managing_systems_using_the_rhel_9_web_console/index \
-$ systemctl enable --now cockpit.socket \
+## Quickstart
+For beginners, refer to the [Quickstart Guide](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/). You can copy and paste commands directly into your terminal.
+
+---
+
+## Important Directories
+- `/`, `/home`, `/tmp`, `/var`, `/var/tmp`, `/var/log`, `/var/log/audit`, `/boot`
+- Always shred or clean drives and motherboards upon disposal to prevent credential harvesting.
+
+---
+
+## Cockpit
+Cockpit supports Ubuntu Focal (20.04), ROS-Noetic, and Gazebo (Gazebo not supported on RHEL9).
+- [Cockpit Documentation](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/managing_systems_using_the_rhel_9_web_console/index)
+```bash
+$ systemctl enable --now cockpit.socket
 $ sudo dnf install -y cockpit-machines
+```
 
-# VPN
-https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/configuring_and_managing_networking/configuring-a-vpn-connection_configuring-and-managing-networking#configuring-a-vpn-connection_configuring-and-managing-networking 
-<br>
-Cockpit allows the creation of a Wireguard vpn that inserts an interface and can only be used if FIPS is disabled. While this does add convenience, Wireguard is not recommended for production whereas Libreswan (a fork of Openswan IPsec) is.
+---
 
-# Install virt packages (if not already available) 
-$ sudo dnf group install "Virtualization Host" \
-$ sudo dnf install qemu-kvm libvirt virt-install virt-viewer \
-$ for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done \
-$ virt-host-validate \
-$ sudo dnf update -y \
-$ sudo dnf install -y pip     
+## VPN
+- [VPN Configuration Guide](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/configuring_and_managing_networking/configuring-a-vpn-connection_configuring-and-managing-networking)
+- Cockpit supports WireGuard VPN (requires FIPS disabled). For production, use Libreswan (IPsec fork).
 
-# Install Go 
-** go install can be used to install other go versions ** \
-$ sudo dnf install -y go \
-or \
-https://go.dev/dl/ Download package appropriate for your architecture \
-https://go.dev/doc/install follow the install instructions
+---
 
+## Virtualization Setup
+Install virtualization packages:
+```bash
+$ sudo dnf group install "Virtualization Host"
+$ sudo dnf install qemu-kvm libvirt virt-install virt-viewer
+$ for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done
+$ virt-host-validate
+$ sudo dnf update -y
+$ sudo dnf install -y pip
+```
 
-# VS Code 
-https://code.visualstudio.com/insiders/# \
-$ cd Downloads && ls <br>
-$ sudo dnf install (code-insiders).rpm && sudo rm (code-insiders).rpm \
-or \
-sudo dnf install code(-insiders) -y 
+---
 
-# Podman Desktop
-$ flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo <br> 
-$ flatpak install --user flathub io.podman_desktop.PodmanDesktop <br> 
-$ flatpak update --user io.podman_desktop.PodmanDesktop <br> 
+## Install Go
+```bash
+$ sudo dnf install -y go
+```
+
+---
+
+## Visual Studio Code
+- [VS Code Insiders](https://code.visualstudio.com/insiders/)
+```bash
+$ cd Downloads && ls
+$ sudo dnf install (code-insiders).rpm && sudo rm (code-insiders).rpm
+```
+
+---
+
+## Podman Desktop
+```bash
+$ flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
+$ flatpak install --user flathub io.podman_desktop.PodmanDesktop
+$ flatpak update --user io.podman_desktop.PodmanDesktop
 $ flatpak run io.podman_desktop.PodmanDesktop
+```
 
-# K8 (Kubernetes)
-Kubectl, kubeadm, kind, minikube \
-$ sudo yum install -y kubelet kubeadm kubectl \
-$ systemctl enable && systemctl start kubelet \
-$ go install sigs.k8s.io/kind@v0.27.0 \
-$ sudo mv ~/go/bin/kind /bin \
-$ sudo rmd -r ~/go \
+---
+
+## Kubernetes (K8s)
+Install Kubernetes tools:
+```bash
+$ sudo yum install -y kubelet kubeadm kubectl
+$ systemctl enable && systemctl start kubelet
+$ go install sigs.k8s.io/kind@v0.27.0
+$ sudo mv ~/go/bin/kind /bin
+$ sudo rm -r ~/go
 $ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
 $ sudo rpm -Uvh minikube-latest.x86_64.rpm
+```
 
+---
 
-# IT Tools :8080
-$ podman run -d --name it-tools --restart unless-stopped -p 8080:80 corentinth/it-tools:latest 
+## IT Tools
+Run IT tools on port 8080:
+```bash
+$ podman run -d --name it-tools --restart unless-stopped -p 8080:80 corentinth/it-tools:latest
+```
 
-# Grafana :3000 (Change port IF running Kali-Linux)
-$ sudo systemctl daemon-reload \
-$ sudo systemctl start grafana-server \
-$ sudo systemctl status grafana-server \
-$ sudo systemctl enable grafana-server.service 
+---
 
-# VM Creation 
-https://support.broadcom.com/ \
-** Using VMM or Cockpit will create a VM in the qemu domain **  \
-** RHEL does not support VM qemu domain and is discouraged for production environments ** \
-\
-VMware Fusion (Mac) \
-Oracle Virtual Box VDI (Platform supports both VHDX and VMX) \
-Cockpit - localhost:9090 (stored on computer) or HOST-IP:9090 (unsecure/no TLS) \
-VMware Workstation Pro (Windows/Linux) - requires vsphere or vcenter esxi for netboot
+## Grafana
+Run Grafana on port 3000:
+```bash
+$ sudo systemctl daemon-reload
+$ sudo systemctl start grafana-server
+$ sudo systemctl status grafana-server
+$ sudo systemctl enable grafana-server.service
+```
 
-# Ubuntu 24.04 <br> ROS2 and Gazebo Support 
-AMD \
-https://ubuntu.com/download/desktop/thank-you?version=24.04.2&architecture=amd64&lts=true \
-$ sudo mkdir ~/iso \
+---
+
+## Virtual Machine (VM) Creation
+- Use VMM or Cockpit to create VMs in the QEMU domain (not recommended for production).
+- Supported platforms:
+    - VMware Fusion (Mac)
+    - Oracle VirtualBox (supports VHDX and VMX)
+    - Cockpit: `localhost:9090` or `HOST-IP:9090` (unsecured)
+    - VMware Workstation Pro (requires vSphere or vCenter ESXi for netboot)
+
+---
+
+## Ubuntu 24.04
+### AMD
+- [Download Ubuntu Desktop](https://ubuntu.com/download/desktop/thank-you?version=24.04.2&architecture=amd64&lts=true)
+```bash
+$ sudo mkdir ~/iso
 $ sudo mv ~/Downloads/ubuntu-24.04.2-desktop-amd64.iso ~/iso
+```
 
-ARM \
-https://ubuntu.com/download/server/arm \
-Then use terminal to install Desktop (flavour)
+### ARM
+- [Download Ubuntu Server for ARM](https://ubuntu.com/download/server/arm)
+- Use the terminal to install the desktop flavor.
 
-# Auto-install
-auto-install.yaml
-\
-<br>
-# ROS2(QT)
-$ locale  # check for UTF-8 \
-$ sudo apt update && sudo apt install locales \
-sudo locale-gen en_US en_US.UTF-8 \
-sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 \
-export LANG=en_US.UTF-8 \
-$ locale  # verify settings \
-$ sudo apt install software-properties-common \
-$ sudo add-apt-repository universe \
-$ sudo apt update && sudo apt install curl -y \
+---
+
+## ROS2 (QT)
+Install ROS2:
+```bash
+$ locale  # check for UTF-8
+$ sudo apt update && sudo apt install locales
+$ sudo locale-gen en_US en_US.UTF-8
+$ sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+$ export LANG=en_US.UTF-8
+$ locale  # verify settings
+$ sudo apt install software-properties-common
+$ sudo add-apt-repository universe
+$ sudo apt update && sudo apt install curl -y
 $ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-$ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null \
-$ sudo apt update && sudo apt install ros-dev-tools \
-$ sudo apt update -y && sudo apt upgrade -y \
-$ sudo apt install ros-jazzy-desktop \
+$ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+$ sudo apt update && sudo apt install ros-dev-tools
+$ sudo apt update -y && sudo apt upgrade -y
+$ sudo apt install ros-jazzy-desktop
 $ source /opt/ros/jazzy/setup.bash
-<br>
-# Gazebo Harmonic
-$ sudo apt-get update && sudo apt-get install lsb-release gnupg \
+```
+
+---
+
+## Gazebo Harmonic
+Install Gazebo Harmonic:
+```bash
+$ sudo apt-get update && sudo apt-get install lsb-release gnupg
 $ sudo curl https://packages.osrfoundation.org/gazebo.gpg --output /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null \
+$ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
 $ sudo apt-get update && sudo apt-get install gz-harmonic
-<br>
-
-
-
- 
-
-  
-
- 
+```
