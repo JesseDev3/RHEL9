@@ -18,9 +18,8 @@ virt-host-validate
 systemctl enable --now cockpit.socket
 
 # Check if /etc/cockpit/cockpit.conf exists, create it if not
-if [ ! -f /etc/cockpit/cockpit.conf ]; then
+# Touch only creates a new file if it doesn't already exist and doesn't modify it if it does
   sudo touch /etc/cockpit/cockpit.conf
-fi
 
 # Create /etc/issue.cockpit (prefer /etc/cockpit/issue.cockpit so both are in the same dir)
 cat <<EOF | sudo tee /etc/cockpit/issue.cockpit
@@ -28,11 +27,8 @@ Welcome to Your Server Dashboard!
 This is a test server for the IT Tools project.
 EOF
 
-# Note: The cockpit.conf file is created by the cockpit package and should not be modified directly.
-# Modifying this file directly can lead to issues during package updates, as it may be overwritten.
-# Instead, create a separate configuration file in the /etc/cockpit directory to ensure your changes persist.
-# Instead, create a new file in the /etc/cockpit directory with the desired configuration.
-cat <<EOF | sudo tee /etc/cockpit/cockpit1.conf
+# Edit /etc/cockpit/cockpit.conf to set the banner
+cat <<EOF | sudo tee /etc/cockpit/cockpit.conf
 [Session]
 Banner=/etc/issue.cockpit
 EOF
@@ -42,14 +38,15 @@ sudo systemctl try-restart cockpit
 
 # Kubernetes
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
-baseurl=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/
+[kubernetes]
 name=Kubernetes
 baseurl=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/
 enabled=1
 gpgcheck=1
 gpgkey=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/repodata/repomd.xml.key
+exclude=kubelet kubeadm kubectl cri-tools kubernetes-cni
 EOF
-sudo yum install -y kubelet kubeadm kubectl
+sudo yum install -y kubelet kubeadm kubectl cri-tools kubernetes-cni --disableexcludes=kubernetes
 systemctl enable --now kubelet
 # Kind
 ARCH=$(uname -m)
@@ -93,33 +90,19 @@ sudo rpm -Uvh "$RPM_FILE" && rm -f "$RPM_FILE"
 sudo yum install -y cockpit-podman container-tools podman podman-docker 
 flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y --user flathub io.podman_desktop.PodmanDesktop
-sudo gnome-terminal -- bash -c "flatpak run io.podman_desktop.PodmanDesktop"
+# sudo gnome-terminal -- bash -c "flatpak run io.podman_desktop.PodmanDesktop"
 
 # Go (Arch dependant linux/amd64 or linux/arm64)
+# Go install can be used to install other versions of Go.
 echo "Proceeding with Go installation..."
 sudo yum install -y golang
-# Go install can be used to install other versions of Go.
 
 # Verify Go installation and PATH configuration
 if ! command -v go &> /dev/null; then
   echo "Error: Go is not installed or not in PATH. Please check the installation."
 fi
-echo "Go is installed. Version: $(go version)"
-
-# Ensure Go binary is accessible before running go install
-if ! source /etc/profile.d/go.sh &> /dev/null; then
-  echo "Error: Failed to source /etc/profile.d/go.sh. Please check the file."
-fi
-if ! grep -q 'export PATH=$PATH:/usr/local/go/bin' /etc/profile.d/go.sh; then
-  echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee -a /etc/profile.d/go.sh
-fi
-source /etc/profile.d/go.sh
-fi
-fi
 echo "Go environment is properly set up."
-
-
-
+echo "$(go version)"
 
 # (go get not supported outside of module)
 # go get -u gorm.io/gorm github.com/gin-gonic/gin 
