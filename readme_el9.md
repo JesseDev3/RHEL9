@@ -72,7 +72,7 @@ $ sudo dnf install (code-insiders).rpm && sudo rm (code-insiders).rpm
 
 ---
 
-## Podman Desktop
+## [Podman Desktop](https://podman-desktop.io/docs/installation)
 ```bash
 $ flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 $ flatpak install --user flathub io.podman_desktop.PodmanDesktop
