@@ -115,9 +115,7 @@ $ sudo systemctl enable grafana-server.service
 ```
 ---
 
-## Virtual Machine (VM) Creation
-- Use VMM or Cockpit to create VMs in the QEMU domain (not recommended for production).
-- Supported platforms:
+## [Virtual Machine (VM) Creation](https://docs.oracle.com/en/operating-systems/oracle-linux/cockpit/cockpit-kvm.html)
     - VMware Fusion (Mac)
     - Oracle VirtualBox (supports VHDX and VMX)
     - Cockpit: `localhost:9090` (stored locally) or `HOST-IP:9090` (unsecure - lacks TLS)
