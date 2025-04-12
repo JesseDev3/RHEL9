@@ -29,11 +29,10 @@ $ sudo dnf update -y \
 $ sudo dnf install -y pip     
 
 # Install Go 
-https://go.dev/doc/install https://go.dev/dl/ \
 $ sudo dnf install -y go \
 or \
-$ curl \
-$ tar 
+https://go.dev/dl/ Download package appropriate for your architecture \
+https://go.dev/doc/install follow the install instructions\
 
 
 # VS Code https://code.visualstudio.com/insiders/#
