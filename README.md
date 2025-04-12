@@ -6,6 +6,7 @@ sudo bash setup.sh
 <br>
 # RHEL9
 / , /home , /tmp , /var , /var/tmp , /var/log , /var/log/audit , /boot \
+<br>
 Becoming familiar and creating shared directories will greatly reduce time spent later! \
 Always shred or clean drives and motherboards upon disposal if possible, to avoid credential harvesting by py dump of partitions or other methods
 
