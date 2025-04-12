@@ -29,11 +29,11 @@ $ sudo dnf update -y \
 $ sudo dnf install -y pip     
 
 # Install Go 
-[https://go.dev/doc/install](https://go.dev/dl/)
-https://go.dev/dl/
+[https://go.dev/doc/install](https://go.dev/dl/) \
 $ sudo dnf install -y go \
 or \
-curl -LO https://go.dev/dl/go1.24.2.linux-amd(arm)64.tar.gz
+$ curl 
+$ tar 
 
 
 # VS Code https://code.visualstudio.com/insiders/#
