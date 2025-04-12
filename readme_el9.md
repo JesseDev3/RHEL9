@@ -1,4 +1,4 @@
-## [RHEL9 Docs](https://docs.oracle.com/en/operating-systems/oracle-linux/9/)
+# [RHEL9 Docs](https://docs.oracle.com/en/operating-systems/oracle-linux/9/)
 
 ## Quickstart
 For a quickstart, You can copy and paste 
@@ -23,7 +23,7 @@ $ sudo dnf install -y cockpit-machines
 
 ---
 
-## [VPN Configuration Guide](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/configuring_and_managing_networking/configuring-a-vpn-connection_configuring-and-managing-networking)
+## [VPN Config Guide](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/configuring_and_managing_networking/configuring-a-vpn-connection_configuring-and-managing-networking)
 - Cockpit supports WireGuard VPN (requires FIPS disabled). For production, use Libreswan (Openswan IPsec fork). 
 
 ---
@@ -123,6 +123,12 @@ $ sudo systemctl enable grafana-server.service
 
 ---
 
+## [Setting up HA Clustering](https://docs.oracle.com/en/operating-systems/oracle-linux/9/availability/index.html)
+```bash
+
+
+```
+
 ## Database Connection
 [ASMLIB v3](https://docs.oracle.com/en/operating-systems/oracle-linux/asmlib/asmlib-Preface.html#preface) \
 ULN recommended to keep the system updated
@@ -141,8 +147,3 @@ Oracle DB 23ai
 
 ---
 
-## [Setting up HA Clustering](https://docs.oracle.com/en/operating-systems/oracle-linux/9/availability/index.html)
-```bash
-
-
-```
