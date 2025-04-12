@@ -1,3 +1,5 @@
+https://www.google.com/url?sa=i&url=https%3A%2F%2Fca.pinterest.com%2Fsuffalfo%2Fno-disassemble-johnny-5%2F&psig=AOvVaw0T7KeOQVN8fwuBwqo_W5eD&ust=1744570522708000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLDkofGV04wDFQAAAAAdAAAAABAE
+
 # Before we begin
 - Tools and Features do not have to be installed on the same server for communication
 - Personal preferences: 
