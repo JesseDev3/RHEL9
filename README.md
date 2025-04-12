@@ -56,6 +56,16 @@ $ sudo dnf install -y pip
 ```bash
 $ sudo dnf install -y go
 ```
+AMD/INTEL
+```bash
+$ curl -LO https://go.dev/dl/go1.24.2.linux-amd64.tar.gz
+$ rm -rf /usr/local/go && tar -C /usr/local -xzf go1.24.2.linux-amd64.tar.gz
+```
+ARM
+```bash
+$ curl https://go.dev/dl/go1.24.2.linux-arm64.tar.gz
+$ rm -rf /usr/local/go && tar -C /usr/local -xzf go1.24.2.linux-amd64.tar.gz
+```
 
 ---
 
