@@ -1,4 +1,4 @@
-## RHEL9 [Docs](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/)
+## [RHEL9 Docs](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/)
 
 ## Quickstart
 For a quickstart, You can copy and paste 
