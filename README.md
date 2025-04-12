@@ -97,8 +97,17 @@ $ flatpak run io.podman_desktop.PodmanDesktop
 ## Kubernetes (K8s)
 Install Kubernetes tools:
 ```bash
-$ sudo yum install -y kubelet kubeadm kubectl
-$ systemctl enable && systemctl start kubelet
+$ cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/
+enabled=1
+gpgcheck=1
+gpgkey=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/repodata/repomd.xml.key
+exclude=kubelet kubeadm kubectl cri-tools kubernetes-cni
+EOF
+$ sudo yum install -y kubelet kubeadm kubectl cri-tools kubernetes-cni --disableexcludes=kubernetes
+$ systemctl enable --now kubelet
 $ go install sigs.k8s.io/kind@v0.27.0
 $ sudo mv ~/go/bin/kind /bin
 $ sudo rm -r ~/go
