@@ -123,79 +123,91 @@ $ sudo systemctl enable grafana-server.service
 
 ---
 
-## [Setting up HA Clustering](https://docs.oracle.com/en/operating-systems/oracle-linux/9/availability/index.html) 
-work on script to prompt user if they would like to set up HA before continuing \
-Corosync and Pacemaker
+## [Setting up HA Clustering](https://docs.oracle.com/en/operating-systems/oracle-linux/9/availability/index.html)
+
+Before continuing, would you like to set up High Availability (HA) Clustering? This setup involves configuring Corosync and Pacemaker.
+
+### Install Required Packages
+Enable necessary repositories and install HA packages:
 ```bash
 $ sudo dnf config-manager --enable ol9_appstream ol9_baseos_latest ol9_addons
 $ sudo dnf install pcs pacemaker resource-agents fence-agents-all
 ```
-(Script to auto check firewalld before moving forward) \
-If running firewalld, add HA service to each node \
-TCP ports
-2224 (used by the pcs daemon) 
-3121 (for Pacemaker Remote nodes)
-port 21064 (for DLM resources)
-UDP ports 
-5405 (for Corosync clustering)
-5404 (for Corosync multicast, if configured): 
+
+### Configure Firewall
+If `firewalld` is running, add the HA service to each node. A script can be used to auto-check `firewalld` status before proceeding.
+
+#### Required Ports
+- **TCP Ports**:
+    - `2224` (pcs daemon)
+    - `3121` (Pacemaker Remote nodes)
+    - `21064` (DLM resources)
+- **UDP Ports**:
+    - `5405` (Corosync clustering)
+    - `5404` (Corosync multicast, if configured)
+
+Add the HA service to the firewall:
 ```bash
 $ sudo firewall-cmd --permanent --add-service=high-availability
 $ sudo firewall-cmd --add-service=high-availability
 ```
+
+### Enable and Start Services
+Set a password for the `hacluster` user and enable the `pcsd` service:
 ```bash
-sudo passwd hacluster
-sudo systemctl enable --now pcsd.service
+$ sudo passwd hacluster
+$ sudo systemctl enable --now pcsd.service
 ```
-[Create an HA Cluster on OCI](https://docs.oracle.com/en-us/iaas/oracle-linux/ha-clustering/ha-clustering-overview.htm)
+
+For more details, refer to the [Create an HA Cluster on OCI](https://docs.oracle.com/en-us/iaas/oracle-linux/ha-clustering/ha-clustering-overview.htm) guide.
 
 
-## [Database Connection]()
-[ASMLIB v3](https://docs.oracle.com/en/operating-systems/oracle-linux/asmlib/asmlib-Preface.html#preface) 
-- ULN recommended to keep the system updated 
-- Sign in / register [HERE](https://linux.oracle.com)
-- Systems tab > registered systems > link name for specified system
-- Now on Systems Details page > Manage Subscriptions
-- On System Summary page select "ASMLIB" & "Oracle Linux Addons" from available channels > click right arrow > subscribed > Save Subscriptions  
-#####
-Must Subscribe to ULN or download packages before proceeding
-Using this method requires manual patches and updates \
-https://www.oracle.com/linux/downloads/linux-asmlib-v8-downloads.html \
-https://www.oracle.com/linux/downloads/linux-asmlib-v9-downloads.html 
+## [Database Connection](https://docs.oracle.com/en/operating-systems/oracle-linux/asmlib/asmlib-Preface.html#preface)
 
+### ASMLIB v3
+- **ULN Recommended**: Keep the system updated by subscribing to the [Oracle Linux Network (ULN)](https://linux.oracle.com).
+- **Steps to Subscribe**:
+    1. Sign in or register [here](https://linux.oracle.com).
+    2. Navigate to the **Systems** tab > **Registered Systems** > Select the system link.
+    3. On the **System Details** page, go to **Manage Subscriptions**.
+    4. On the **System Summary** page:
+         - Select **ASMLIB** and **Oracle Linux Addons** from the available channels.
+         - Click the right arrow to subscribe.
+         - Save the subscriptions.
+
+### Manual Patches and Updates
+If not subscribed to ULN, download packages manually:
+- [ASMLIB v8 Downloads](https://www.oracle.com/linux/downloads/linux-asmlib-v8-downloads.html)
+- [ASMLIB v9 Downloads](https://www.oracle.com/linux/downloads/linux-asmlib-v9-downloads.html)
+
+### Installation Commands
+Install ASMLIB support:
 ```bash
 $ sudo dnf install oracleasm-support oracleasmlib
 ```
----
-work on script to detect and continue or exit 0 if not supported \
-uek r7 = no driver req 
 
 ---
-ol8 + rhck = install driver
+
+### Driver Requirements
+- **UEK R7**: No driver required.
+- **OL8 + RHCK**: Install the driver:
+    ```bash
+    $ sudo dnf install kmod-redhat-oracleasm
+    ```
+- **OL9 + RHCK**: No driver required, but `io_uring` must be enabled.
+
+### Enable `io_uring`
+Add the following line to `/etc/sysctl.conf`:
 ```bash
-$ sudo dnf install kmod-redhat-oracleasm
+kernel.io_uring_disabled = 0
 ```
----
-ol9 + rhck = no driver but must enable io_uring
-enable by adding following line to /etc/sysctl.conf:
-```bash
-$ kernel.io_uring_disabled = 0
-```
----
+
+Apply the changes:
 ```bash
 $ sudo sysctl -p
 $ sudo dnf update -y
 ```
 
----
-
-Oracle Exadata
-
----
-
-Oracle DB 23ai
-
----
 
 [GoldenGate Free](https://docs.oracle.com/en/middleware/goldengate/studio-free/23/uggsf/get-started.html#GUID-42B5358A-A84E-45D2-90CC-D55A474B3678)
 ```bash
@@ -204,5 +216,7 @@ $ podman pull container-registry.oracle.com/goldengate/goldengate-studio-free:la
 $ docker run -p 80:80 -p 443:443 container-registry.oracle.com/goldengate/goldengate-studio-free:latest
 
 ```
+Oracle DB 23ai
 
+---
 
