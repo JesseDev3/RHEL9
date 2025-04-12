@@ -4,6 +4,7 @@
 - Personal preferences: 
 - Certain bookmarks for certain browsers
 - Setting up shared directories to avoid redundant filepaths (VS Code) and downloads
+- e.g.- setting up default directory for saving or accessing vs code files (or similar) in onedrive 
 - Organization is key!
 
 ## RHEL9 Documentation and Setup Guide
