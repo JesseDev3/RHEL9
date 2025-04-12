@@ -1,5 +1,4 @@
-## RHEL9 Documentation and Setup Guide
-refer to RHEL9 Documentation [Homepage](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/)
+## RHEL9 [Docs](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/)
 
 ## Quickstart
 For a quickstart, You can copy and paste 
@@ -15,9 +14,8 @@ $ sudo bash setup.sh
 
 ---
 
-## Cockpit
+## [Cockpit](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/managing_systems_using_the_rhel_9_web_console/index)
 Cockpit supports Ubuntu Focal (20.04), ROS-Noetic, and Gazebo (Gazebo not supported on RHEL9).
-- [Cockpit Documentation](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/managing_systems_using_the_rhel_9_web_console/index)
 ```bash
 $ systemctl enable --now cockpit.socket
 $ sudo dnf install -y cockpit-machines
@@ -25,8 +23,7 @@ $ sudo dnf install -y cockpit-machines
 
 ---
 
-## VPN
-- [VPN Configuration Guide](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/configuring_and_managing_networking/configuring-a-vpn-connection_configuring-and-managing-networking)
+## [VPN Configuration Guide](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/configuring_and_managing_networking/configuring-a-vpn-connection_configuring-and-managing-networking)
 - Cockpit supports WireGuard VPN (requires FIPS disabled). For production, use Libreswan (Openswan IPsec fork). 
 
 ---
@@ -63,8 +60,7 @@ $ export PATH=$PATH:/usr/local/go/bin
 
 ---
 
-## Visual Studio Code
-- [VS Code Insiders](https://code.visualstudio.com/insiders/)
+## [VS Code - Insiders](https://code.visualstudio.com/insiders/)
 ```bash
 $ sudo dnf install -y code-insiders
 ```
