@@ -6,7 +6,7 @@ sudo bash setup.sh
 <br>
 # RHEL9
 / , /home , /tmp , /var , /var/tmp , /var/log , /var/log/audit , /boot \
-$Creating shared directories on your BM will greatly reduce time spent later! \
+Becoming familiar and creating shared directories will greatly reduce time spent later! \
 Always shred or clean drives and motherboards upon disposal if possible, to avoid credential harvesting with openwrt and py dump of partitions or other methods
 
 # Cockpit allows for Ubuntu Focal(20.04)/ROS-Noetic/Gazebo (Gazebo not currently supported on linux9)
