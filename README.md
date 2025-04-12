@@ -32,13 +32,15 @@ $ sudo dnf install -y pip
 $ sudo dnf install -y go \
 or \
 https://go.dev/dl/ Download package appropriate for your architecture \
-https://go.dev/doc/install follow the install instructions\
+https://go.dev/doc/install follow the install instructions
 
 
 # VS Code 
 https://code.visualstudio.com/insiders/# \
 $ cd Downloads && ls <br>
-$ sudo dnf install (code-insiders).rpm && sudo rm (code-insiders).rpm
+$ sudo dnf install (code-insiders).rpm && sudo rm (code-insiders).rpm \
+or \
+sudo dnf install code(-insiders) -y 
 
 # Podman Desktop
 $ flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo <br> 
@@ -49,12 +51,12 @@ $ flatpak run io.podman_desktop.PodmanDesktop
 # K8 (Kubernetes)
 Kubectl, kubeadm, kind, minikube \
 $ sudo yum install -y kubelet kubeadm kubectl \
-**$ systemctl enable && systemctl start kubelet if necessary** \
+$ systemctl enable && systemctl start kubelet \
 $ go install sigs.k8s.io/kind@v0.27.0 \
 $ sudo mv ~/go/bin/kind /bin \
 $ sudo rmd -r ~/go \
 $ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
-sudo rpm -Uvh minikube-latest.x86_64.rpm
+$ sudo rpm -Uvh minikube-latest.x86_64.rpm
 
 
 # IT Tools :8080
