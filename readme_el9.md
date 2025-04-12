@@ -41,7 +41,7 @@ $ sudo dnf install -y pip
 
 ---
 
-## Install Go 
+## [Install Go](https://go.dev/doc/install) 
 ```bash
 $ sudo dnf install -y go
 ```
