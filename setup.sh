@@ -30,7 +30,7 @@ EOF
 # Edit /etc/cockpit/cockpit.conf to set the banner
 cat <<EOF | sudo tee /etc/cockpit/cockpit.conf
 [Session]
-Banner=/etc/issue.cockpit
+Banner=/etc/cockpit/issue.cockpit
 EOF
 
 sudo systemctl try-restart cockpit
