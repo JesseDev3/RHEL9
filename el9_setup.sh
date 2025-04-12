@@ -18,7 +18,7 @@ virt-host-validate
 systemctl enable --now cockpit.socket
 
 # Check if /etc/cockpit/cockpit.conf exists, create it if not
-# Touch only creates a new file if it doesn't already exist and doesn't modify it if it does
+# Touch only creates a new file if it doesn't already exist and doesn't modify if it does
   sudo touch /etc/cockpit/cockpit.conf
 
 # Create /etc/issue.cockpit (prefer /etc/cockpit/issue.cockpit so both are in the same dir)
@@ -77,7 +77,7 @@ case "$ARCH" in
         ;;
     *)
         echo "Unsupported architecture: $ARCH"
-        exit 1
+        exit 0
         ;;
 esac
 
@@ -90,7 +90,8 @@ sudo rpm -Uvh "$RPM_FILE" && rm -f "$RPM_FILE"
 sudo yum install -y cockpit-podman container-tools podman podman-docker 
 flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y --user flathub io.podman_desktop.PodmanDesktop
-# sudo gnome-terminal -- bash -c "flatpak run io.podman_desktop.PodmanDesktop"
+echo "Podman Desktop installed. You can launch it using the following command:"
+echo "flatpak run io.podman_desktop.PodmanDesktop"
 
 # Go (Arch dependant linux/amd64 or linux/arm64)
 # Go install can be used to install other versions of Go.
@@ -103,7 +104,6 @@ if ! command -v go &> /dev/null; then
 fi
 echo "Go environment is properly set up."
 echo "$(go version)"
-
 # (go get not supported outside of module)
 # go get -u gorm.io/gorm github.com/gin-gonic/gin 
 # go get -u github.com/volatiletech/authboss/v3
@@ -116,17 +116,8 @@ echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com
 # Prompt the user to choose between VS Code and VS Code Insiders
 echo "Choose the version of Visual Studio Code to install:"
 echo "1) Visual Studio Code (Stable)"
-while true; do
-  read -p "Enter your choice (1, 2, or 3): " choice
-  if [[ "$choice" =~ ^[1-3]$ ]]; then
-    break
-  else
-    echo "Invalid input. Please enter 1, 2, or 3."
-  fi
-done
+echo "2) Visual Studio Code Insiders"
 echo "3) Skip Install"
-read -p "Enter your choice (1 , 2 or 3): " choice
-
 case $choice in
   1)
     echo "Installing Visual Studio Code (Stable)..."
@@ -138,7 +129,7 @@ case $choice in
     ;;
   *)
     echo "Skipping."
-    exit 1
+    exit 0
     ;;
 esac
 
