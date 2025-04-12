@@ -124,6 +124,12 @@ $ sudo systemctl enable grafana-server.service
 ---
 
 ## Database Connection
+[ASMLIB v3](https://docs.oracle.com/en/operating-systems/oracle-linux/asmlib/asmlib-Preface.html#preface) \
+ULN recommended to keep the system updated
+```bash
+
+```
+
 [GoldenGate Free](https://docs.oracle.com/en/middleware/goldengate/studio-free/23/uggsf/get-started.html#GUID-42B5358A-A84E-45D2-90CC-D55A474B3678)
 ```bash
 $ podman login container-registry.oracle.com
