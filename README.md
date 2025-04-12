@@ -18,6 +18,6 @@ $ sudo bash setup.sh
 
 ---
 
-## [Ubuntu 24.04 Noble Numbat](https://github.com/JesseDev3/linuxqk/blob/main/readme_el9.md)
+## [Ubuntu 24.04 - Noble Numbat](https://github.com/JesseDev3/linuxqk/blob/main/readme_el9.md)
 In progress
 ---
