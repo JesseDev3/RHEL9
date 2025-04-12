@@ -135,7 +135,14 @@ ULN recommended to keep the system updated
 $ podman login container-registry.oracle.com
 $ podman pull container-registry.oracle.com/goldengate/goldengate-studio-free:latest
 $ docker run -p 80:80 -p 443:443 container-registry.oracle.com/goldengate/goldengate-studio-free:latest
+
 ```
 Oracle DB 23ai
 
 ---
+
+## [Setting up HA Clustering](https://docs.oracle.com/en/operating-systems/oracle-linux/9/availability/index.html)
+```bash
+
+
+```
