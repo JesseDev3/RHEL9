@@ -1,3 +1,6 @@
+# Work on minikiube
+# Please be patient for vs code check
+
 # Best Practice
 sudo yum update -y
 
@@ -88,12 +91,10 @@ RPM_FILE=$(basename "$URL")
 sudo rpm -Uvh "$RPM_FILE" && rm -f "$RPM_FILE"
 
 # Podman 
-sudo yum install -y cockpit-podman container-toolspodman podman-docker 
+sudo yum install -y cockpit-podman container-tools podman podman-docker 
 flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y --user flathub io.podman_desktop.PodmanDesktop
-gnome-terminal --bash -c "flatpak run io.podman_desktop.PodmanDesktop"
-podman pull docker.io/coretinth/it-tools:latest
-podman run -d -p 8080:80 --name it-tools -it corentinth/it-tools
+sudo gnome-terminal -- bash -c "flatpak run io.podman_desktop.PodmanDesktop"
 
 # Go (Arch dependant linux/amd64 or linux/arm64)
 if ! command -v go &> /dev/null; then
@@ -103,9 +104,32 @@ else
   echo "Go is already installed. Version: $(go version)"
 fi
 # Go install can be used to install other versions of Go.
-sudo curl -LO https://go.dev/dl/go1.24.2.linux-amd64.tar.gz | tar xz -c /usr/local/go
-export PATH=$PATH:/usr/local/go/bin | source $HOME/.profile
+TEMP_FILE=$(mktemp)
+sudo curl --tlsv1.2 --fail -Lo "$TEMP_FILE" https://go.dev/dl/go1.24.2.linux-amd64.tar.gz
+sudo curl -Lo "$TEMP_FILE" https://go.dev/dl/go1.24.2.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go
+sudo mkdir -p /usr/local/go
+sudo tar -xzf "$TEMP_FILE" -C /usr/local/go --strip-components=1
+sudo touch /etc/profile.d/go.sh
+export PATH=$PATH:/usr/local/go/bin
+sudo touch /etc/profile.d/go.sh
+
+# Verify Go installation and PATH configuration
+if ! command -v go &> /dev/null; then
+  echo "Error: Go is not installed or not in PATH. Please check the installation."
+  exit 1
+fi
+echo "Go is installed. Version: $(go version)"
+echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee /etc/profile.d/go.sh
+# Note: Run 'source /etc/profile.d/go.sh' in new shell sessions to apply the changes.
+source /etc/profile.d/go.sh
+  echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee -a /etc/profile.d/go.sh
+fi
 go install github.com/pressly/goose/v3/cmd/goose@latest
+
+
+
+
 # (go get not supported outside of module)
 # go get -u gorm.io/gorm github.com/gin-gonic/gin 
 # go get -u github.com/volatiletech/authboss/v3
@@ -120,7 +144,7 @@ echo "Choose the version of Visual Studio Code to install:"
 echo "1) Visual Studio Code (Stable)"
 echo "2) Visual Studio Code Insiders"
 echo "3) Skip Install"
-read -p "Enter your choice (1 or 2): " choice
+read -p "Enter your choice (1 , 2 or 3): " choice
 
 case $choice in
   1)
@@ -138,5 +162,7 @@ case $choice in
 esac
 
 # Launch Browser Portals
+podman pull docker.io/coretinth/it-tools:latest
+podman run -d -p 8080:80 --name it-tools -it corentinth/it-tools
 systemctl enable --now grafana-server.service
-firefox localhost:9090 localhost:8080 
+sudo firefox localhost:9090 localhost:8080 
