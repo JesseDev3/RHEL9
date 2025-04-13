@@ -9,18 +9,19 @@ sudo dnf install -y NetworkManager-tui
 sudo nmtui
 ```
 
-Additional command-line tools:
-- `nmcli`
-- `ip`
-- `ethtool`
-- `ifconfig`
-
 #### For Servers With a GUI
 Install and use `nm-connection-editor` for graphical network configuration:
 ```bash
 sudo dnf install -y nm-connection-editor
 sudo nm-connection-editor
 ```
+
+Additional command-line tools:
+- `nmcli`
+- `ip`
+- `ethtool`
+- `ifconfig`
+
 
 #### Cockpit
 Consider using Cockpit for web-based server management.
