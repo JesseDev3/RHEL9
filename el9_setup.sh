@@ -1,6 +1,9 @@
 # Best Practice
 sudo yum update -y
 
+# Network Tools
+sudo yum install -y NetworkManager-tui nm-connection-editor
+
 # Java
 sudo yum install -y nodejs npm java-17-openjdk java-17-openjdk-devel 
 # sudo alternatives --config java 
