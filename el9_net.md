@@ -39,9 +39,7 @@ Libreswan: https://libreswan.org
 
 ---
 
-echo "High Availability Clustering selected."
-    Before continuing, would you like to set up High Availability (HA) Clustering? This setup involves configuring Corosync and Pacemaker.
-
+## High Availability Clustering selected
 ### Install Required Packages
 Enable necessary repositories and install HA packages:
 ```bash
