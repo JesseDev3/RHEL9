@@ -18,7 +18,7 @@ $ sudo bash setup.sh
 
 ---
 
-## [Database](https://github.com/JesseDev3/linuxqk/blob/main/el9_net.md)
+## [Networking](https://github.com/JesseDev3/linuxqk/blob/main/el9_net.md)
 ```bash
 $ curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/el9_net.sh -o el9_net.sh
 $ sudo bash el9_net.sh
@@ -26,7 +26,7 @@ $ sudo bash el9_net.sh
 
 ---
 
-## [Networking](https://github.com/JesseDev3/linuxqk/blob/main/el9_db.md)
+## [Database](https://github.com/JesseDev3/linuxqk/blob/main/el9_db.md)
 ```bash
 $ curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/el9_net.sh -o el9_db.sh
 $ sudo bash el9_db.sh
