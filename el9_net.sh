@@ -107,9 +107,6 @@ case $choice in
                 echo "UDP ports 500 and 4500 have been opened."
             fi
             echo "Libreswan setup complete."
-        else
-            echo "Invalid choice."
-        fi
         ;;
     3)
         echo "Load Balancing selected."
