@@ -32,7 +32,35 @@ case $choice in
         echo "2) Libreswan"
         read -p "Enter your choice (1-2): " vpn_choice
         if [ "$vpn_choice" -eq 1 ]; then
-            echo "Visit https://www.wireguard.com for setup instructions."
+            echo "Installing WireGuard..."
+            sudo dnf install -y wireguard-tools
+            echo "Generating WireGuard keys..."
+            private_key=$(wg genkey)
+            public_key=$(echo "$private_key" | wg pubkey)
+            echo "Private Key: $private_key"
+            echo "Public Key: $public_key"
+            echo "Creating /etc/wireguard/wg0.conf..."
+            sudo bash -c 'cat > /etc/wireguard/wg0.conf <<EOF
+    [Interface]
+    PrivateKey = $private_key
+    Address = 10.0.0.1/24
+    ListenPort = 51820
+
+    [Peer]
+    PublicKey = <peer_public_key>
+    AllowedIPs = 10.0.0.2/32
+    Endpoint = <peer_endpoint>:51820
+    EOF'
+            echo "Adjusting permissions for /etc/wireguard/wg0.conf..."
+            sudo chmod 600 /etc/wireguard/wg0.conf
+            echo "Enabling IP forwarding..."
+            sudo sed -i '/net.ipv4.ip_forward/s/^#//g' /etc/sysctl.conf
+            sudo sysctl -p
+            echo "Starting WireGuard interface..."
+            sudo wg-quick up wg0
+            echo "Enabling WireGuard to start on boot..."
+            sudo systemctl enable wg-quick@wg0
+            echo "WireGuard setup complete. Ensure your firewall allows UDP traffic on port 51820."
         elif [ "$vpn_choice" -eq 2 ]; then
             echo "Installing Libreswan..."
             sudo dnf install -y libreswan
