@@ -44,6 +44,11 @@ $ sudo sysctl -p
 $ sudo dnf update -y
 ```
 
+---
+
+Oracle DB 23ai
+
+---
 
 [GoldenGate Free](https://docs.oracle.com/en/middleware/goldengate/studio-free/23/uggsf/get-started.html#GUID-42B5358A-A84E-45D2-90CC-D55A474B3678)
 ```bash
@@ -52,6 +57,6 @@ $ podman pull container-registry.oracle.com/goldengate/goldengate-studio-free:la
 $ docker run -p 80:80 -p 443:443 container-registry.oracle.com/goldengate/goldengate-studio-free:latest
 
 ```
-Oracle DB 23ai
+
 
 ---
