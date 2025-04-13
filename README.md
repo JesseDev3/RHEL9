@@ -13,7 +13,7 @@
 For a quickstart, You can copy and paste 
 ```bash
 $ curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/el9_setup.sh -o el9_setup.sh
-$ sudo bash setup.sh
+$ sudo bash el9_setup.sh
 ```
 
 ---
