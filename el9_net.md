@@ -39,7 +39,7 @@ Libreswan: https://libreswan.org
 
 ---
 
-## High Availability Clustering selected
+## [High Availability Clustering]()
 ### Install Required Packages
 Enable necessary repositories and install HA packages:
 ```bash
