@@ -1,8 +1,5 @@
 ## [Networking](https://docs.oracle.com/en/operating-systems/oracle-linux/9/network/)
 
-### Prompt User for Network Setup
-Ask the user if they would like to choose a pre-config net env
-
 ### Network Management Tools
 
 #### For Servers Without a GUI
