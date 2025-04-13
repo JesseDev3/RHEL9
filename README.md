@@ -34,18 +34,18 @@ $ sudo bash el9_db.sh
 
 ---
 
-## [Security](https://github.com/JesseDev3/linuxqk/blob/main/el9_db.md)
+## [Security](https://github.com/JesseDev3/linuxqk/blob/main/el9_sec.md)
 ```bash
-$ curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/el9_db.sh -o el9_db.sh
-$ sudo bash el9_db.sh
+$ curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/el9_sec.sh -o el9_sec.sh
+$ sudo bash el9_sec.sh
 ```
 
 ---
 
-## [Monitoring Tuning & Tracing](https://github.com/JesseDev3/linuxqk/blob/main/el9_db.md)
+## [Monitoring Tuning & Tracing](https://github.com/JesseDev3/linuxqk/blob/main/el9_mtt.md)
 ```bash
-$ curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/el9_db.sh -o el9_db.sh
-$ sudo bash el9_db.sh
+$ curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/el9_mtt.sh -o el9_mtt.sh
+$ sudo bash el9_mtt.sh
 ```
 
 ---
