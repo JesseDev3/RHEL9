@@ -96,6 +96,17 @@ case $choice in
             sudo systemctl restart ipsec
             echo "Enabling IPsec service on boot..."
             sudo systemctl enable ipsec
+
+             echo "Checking if UDP ports 500 and 4500 are open..."
+            if sudo firewall-cmd --list-ports | grep -q "500/udp,4500/udp"; then
+                echo "UDP ports 500 and 4500 are already open."
+            else
+                echo "Opening UDP ports 500 and 4500..."
+                sudo firewall-cmd --zone=public --add-port=500/udp --add-port=4500/udp
+                sudo firewall-cmd --permanent --zone=public --add-port=51820/udp --add-port=4500/udp
+                echo "UDP ports 500 and 4500 have been opened."
+            fi
+            
             echo "Libreswan setup complete. Ensure your firewall allows IPsec traffic (UDP ports 500 and 4500)."
         else
             echo "Invalid choice."
