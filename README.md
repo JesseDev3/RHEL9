@@ -6,7 +6,7 @@
     - Use specific bookmarks for certain browsers.
     - Set up shared directories to avoid redundant file paths (e.g., in VS Code) and downloads (e.g., ISOs or other files).
     
-If any free trials are available for any cloud providers, using this guide first will be extremely helpful by being more beneficial to the overlap of the trials and being able to focus more on integration in a multi cloud environment
+If any free trials are available for any cloud providers, using this guide first will hopefully be extremely helpful by assisting in set up so there can be more focus on integration in a multi cloud environment
 ---
 
 ## [Enterprise Linux 9](https://github.com/JesseDev3/linuxqk/blob/main/el9_setup.md) 
