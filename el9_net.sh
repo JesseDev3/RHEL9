@@ -1,7 +1,7 @@
 # This script is designed to assist with network setup, VPN configuration, and load balancing on EL9 systems.
 # It provides options for configuring networking on servers with or without a GUI, setting up VPNs, and enabling load balancing with HAProxy and Keepalived.    
 echo "Choose a setup option:"
-echo "1) Network Setup"
+echo "1) Network Tools Setup"
 echo "2) Configure VPN"
 echo "3) Load Balancing"
 read -p "Enter your choice (1-3): " choice
