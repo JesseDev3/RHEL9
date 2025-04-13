@@ -14,42 +14,42 @@ Amazon Web Services (VPS 3mo , EC2 12mo , certain services 12mo)
 
 ---
 
-## [Enterprise Linux 9](https://github.com/JesseDev3/linuxqk/blob/main/el9_setup.md) 
+## [Enterprise Linux 9](https://github.com/JesseDev3/linux/blob/main/el9_setup.md) 
 For a quickstart, You can copy and paste 
 ```bash
-$ curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/el9_setup.sh -o el9_setup.sh
+$ curl -fsSL https://raw.githubusercontent.com/JesseDev3/linux/refs/heads/main/el9_setup.sh -o el9_setup.sh
 $ sudo bash el9_setup.sh
 ```
 
 ---
 
-## [Networking](https://github.com/JesseDev3/linuxqk/blob/main/el9_net.md)
+## [Networking](https://github.com/JesseDev3/linux/blob/main/el9_net.md)
 ```bash
-$ curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/el9_net.sh -o el9_net.sh
+$ curl -fsSL https://raw.githubusercontent.com/JesseDev3/linux/refs/heads/main/el9_net.sh -o el9_net.sh
 $ sudo bash el9_net.sh
 ```
 
 ---
 
-## [Database](https://github.com/JesseDev3/linuxqk/blob/main/el9_db.md)
+## [Database](https://github.com/JesseDev3/linux/blob/main/el9_db.md)
 ```bash
-$ curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/el9_db.sh -o el9_db.sh
+$ curl -fsSL https://raw.githubusercontent.com/JesseDev3/linux/refs/heads/main/el9_db.sh -o el9_db.sh
 $ sudo bash el9_db.sh
 ```
 
 ---
 
-## [Security](https://github.com/JesseDev3/linuxqk/blob/main/el9_sec.md)
+## [Security](https://github.com/JesseDev3/linux/blob/main/el9_sec.md)
 ```bash
-$ curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/el9_sec.sh -o el9_sec.sh
+$ curl -fsSL https://raw.githubusercontent.com/JesseDev3/linux/refs/heads/main/el9_sec.sh -o el9_sec.sh
 $ sudo bash el9_sec.sh
 ```
 
 ---
 
-## [Monitoring Tuning & Tracing](https://github.com/JesseDev3/linuxqk/blob/main/el9_mtt.md)
+## [Monitoring Tuning & Tracing](https://github.com/JesseDev3/linux/blob/main/el9_mtt.md)
 ```bash
-$ curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/el9_mtt.sh -o el9_mtt.sh
+$ curl -fsSL https://raw.githubusercontent.com/JesseDev3/linux/refs/heads/main/el9_mtt.sh -o el9_mtt.sh
 $ sudo bash el9_mtt.sh
 ```
 
