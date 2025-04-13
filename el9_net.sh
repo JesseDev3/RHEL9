@@ -143,8 +143,6 @@ Set a password for the `hacluster` user and enable the `pcsd` service:
 $ sudo passwd hacluster
 $ sudo systemctl enable --now pcsd.service
 ```
-
-For more details, refer to the [Create an HA Cluster on OCI](https://docs.oracle.com/en-us/iaas/oracle-linux/ha-clustering/ha-clustering-overview.htm) guide.
         ;;
     4)
         echo "Load Balancing selected."
