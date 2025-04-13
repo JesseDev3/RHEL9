@@ -102,6 +102,15 @@ $ sudo rpm -Uvh minikube-latest.x86_64.rpm
 ---
 
 ## CLIs
+Azure Cloud (AZ)
+```bash
+```
+Google Cloud Platform (GCP)
+```bash
+```
+Amazon Web Services (AWS)
+```bash
+```
 
 ---
 
