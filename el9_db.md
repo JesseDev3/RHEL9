@@ -46,7 +46,7 @@ $ sudo dnf update -y
 
 ---
 
-Oracle DB 23ai
+[Oracle DB 23ai]()
 
 ---
 
