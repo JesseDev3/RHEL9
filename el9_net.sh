@@ -47,13 +47,23 @@ case $choice in
         echo "Edit the following configuration files as needed:"
         echo "- /etc/haproxy/haproxy.cfg"
         echo "- /etc/keepalived/keepalived.conf"
-        read -p "Would you like to edit the configuration files now? (y/n): " edit_choice
-        if [[ "$edit_choice" =~ ^[Yy]$ ]]; then
+        echo "1) Edit /etc/haproxy/haproxy.cfg"
+        echo "2) Edit /etc/keepalived/keepalived.conf"
+        echo "3) Continue"
+        read -p "Enter your choice (1-3): " config_choice
+        case $config_choice in
+            1)
             echo "Opening /etc/haproxy/haproxy.cfg..."
             sudo nano /etc/haproxy/haproxy.cfg
+            ;;
+            2)
             echo "Opening /etc/keepalived/keepalived.conf..."
             sudo nano /etc/keepalived/keepalived.conf
-        fi
+            ;;
+            3*)
+            echo "Continuing..."
+            ;;
+        esac
         echo "Enabling traffic on port 80..."
         sudo firewall-cmd --zone=zone --add-port=80/tcp
         sudo firewall-cmd --permanent --zone=zone --add-port=80/tcp
