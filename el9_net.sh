@@ -34,7 +34,32 @@ case $choice in
         if [ "$vpn_choice" -eq 1 ]; then
             echo "Visit https://www.wireguard.com for setup instructions."
         elif [ "$vpn_choice" -eq 2 ]; then
-            echo "Visit https://libreswan.org for setup instructions."
+            echo "Installing Libreswan..."
+            sudo dnf install -y libreswan
+            echo "Configuring Libreswan..."
+            echo "Creating /etc/ipsec.d/myvpn.conf..."
+            sudo bash -c 'cat > /etc/ipsec.d/myvpn.conf <<EOF
+    conn myvpn
+        authby=secret
+        auto=start
+        left=%defaultroute
+        leftid=@yourdomain.com
+        leftsubnet=192.168.1.0/24
+        right=remote.vpn.server
+        rightid=@remote.vpn.server
+        rightsubnet=10.0.0.0/24
+        ike=aes256-sha2;modp1024
+        phase2alg=aes256-sha2;modp1024
+    EOF'
+            echo "Creating /etc/ipsec.d/myvpn.secrets..."
+            sudo bash -c 'cat > /etc/ipsec.d/myvpn.secrets <<EOF
+    @yourdomain.com @remote.vpn.server : PSK "your_pre_shared_key"
+    EOF'
+            echo "Restarting IPsec service..."
+            sudo systemctl restart ipsec
+            echo "Enabling IPsec service on boot..."
+            sudo systemctl enable ipsec
+            echo "Libreswan setup complete. Ensure your firewall allows IPsec traffic (UDP ports 500 and 4500)."
         else
             echo "Invalid choice."
         fi
@@ -60,11 +85,8 @@ case $choice in
             echo "Opening /etc/keepalived/keepalived.conf..."
             sudo nano /etc/keepalived/keepalived.conf
             ;;
-            3)
+            3*)
             echo "Continuing..."
-            ;;
-            *)
-            echo "Invalid Choice"
             ;;
         esac
         echo "Enabling traffic on port 80..."
@@ -77,7 +99,7 @@ case $choice in
         sudo sysctl -p
         ;;
     *)
-        echo "Invalid choice."
+        echo "Invalid choice. Exiting."
         ;;
 esac
 
