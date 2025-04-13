@@ -47,6 +47,13 @@ case $choice in
         echo "Edit the following configuration files as needed:"
         echo "- /etc/haproxy/haproxy.cfg"
         echo "- /etc/keepalived/keepalived.conf"
+        read -p "Would you like to edit the configuration files now? (y/n): " edit_choice
+        if [[ "$edit_choice" =~ ^[Yy]$ ]]; then
+            echo "Opening /etc/haproxy/haproxy.cfg..."
+            sudo nano /etc/haproxy/haproxy.cfg
+            echo "Opening /etc/keepalived/keepalived.conf..."
+            sudo nano /etc/keepalived/keepalived.conf
+        fi
         echo "Enabling traffic on port 80..."
         sudo firewall-cmd --zone=zone --add-port=80/tcp
         sudo firewall-cmd --permanent --zone=zone --add-port=80/tcp
