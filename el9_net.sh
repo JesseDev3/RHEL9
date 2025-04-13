@@ -60,8 +60,11 @@ case $choice in
             echo "Opening /etc/keepalived/keepalived.conf..."
             sudo nano /etc/keepalived/keepalived.conf
             ;;
-            3*)
+            3)
             echo "Continuing..."
+            ;;
+            *)
+            echo "Invalid Choice"
             ;;
         esac
         echo "Enabling traffic on port 80..."
