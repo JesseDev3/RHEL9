@@ -1,32 +1,13 @@
 # This script is designed to assist with network setup, VPN configuration, and load balancing on EL9 systems.
 # It provides options for configuring networking on servers with or without a GUI, setting up VPNs, and enabling load balancing with HAProxy and Keepalived.    
 echo "Choose a setup option:"
-echo "1) Network Tools Setup"
-echo "2) Configure VPN"
-echo "3) HA Clustering"
-echo "4) Load Balancing"
+echo "1) Configure VPN"
+echo "2) HA Clustering"
+echo "3) Load Balancing"
 read -p "Enter your choice (1-3): " choice
 
 case $choice in
     1)
-        echo "Network Setup selected."
-        echo "Would you like to configure networking for:"
-        echo "1) Servers Without a GUI"
-        echo "2) Servers With a GUI"
-        read -p "Enter your choice (1-2): " net_choice
-        if [ "$net_choice" -eq 1 ]; then
-            echo "Installing NetworkManager-tui..."
-            sudo dnf install -y NetworkManager-tui
-            sudo nmtui
-        elif [ "$net_choice" -eq 2 ]; then
-            echo "Installing nm-connection-editor..."
-            sudo dnf install -y nm-connection-editor
-            sudo nm-connection-editor
-        else
-            echo "Invalid choice."
-        fi
-        ;;
-    2)
         echo "Configure VPN selected."
         echo "Choose a VPN option:"
         echo "1) WireGuard"
@@ -109,7 +90,7 @@ case $choice in
             fi
             echo "Libreswan setup complete."
         ;;
-    3) echo "High Availability Clustering selected."
+    2) echo "High Availability Clustering selected."
     Before continuing, would you like to set up High Availability (HA) Clustering? This setup involves configuring Corosync and Pacemaker.
 
 ### Install Required Packages
@@ -144,7 +125,7 @@ $ sudo passwd hacluster
 $ sudo systemctl enable --now pcsd.service
 ```
         ;;
-    4)
+    3)
         echo "Load Balancing selected."
         echo "Installing HAProxy and Keepalived..."
         sudo dnf install -y haproxy keepalived
