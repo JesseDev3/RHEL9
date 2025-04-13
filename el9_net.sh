@@ -60,7 +60,16 @@ case $choice in
             sudo wg-quick up wg0
             echo "Enabling WireGuard to start on boot..."
             sudo systemctl enable wg-quick@wg0
-            echo "WireGuard setup complete. Ensure your firewall allows UDP traffic on port 51820."
+            echo "Checking if UDP port 51820 is open..."
+            if sudo firewall-cmd --list-ports | grep -q "51820/udp"; then
+                echo "UDP port 51820 is already open."
+            else
+                echo "Opening UDP port 51820..."
+                sudo firewall-cmd --zone=public --add-port=51820/udp
+                sudo firewall-cmd --permanent --zone=public --add-port=51820/udp
+                echo "UDP port 51820 has been opened."
+            fi
+            echo "WireGuard setup complete."
         elif [ "$vpn_choice" -eq 2 ]; then
             echo "Installing Libreswan..."
             sudo dnf install -y libreswan
