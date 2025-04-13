@@ -13,8 +13,8 @@
 
 ### Manual Patches and Updates
 If not subscribed to ULN, download packages manually:
-- [ASMLIB v8 Downloads](https://www.oracle.com/linux/downloads/linux-asmlib-v8-downloads.html)
-- [ASMLIB v9 Downloads](https://www.oracle.com/linux/downloads/linux-asmlib-v9-downloads.html)
+- [ASMLIB v8](https://www.oracle.com/linux/downloads/linux-asmlib-v8-downloads.html)
+- [ASMLIB v9](https://www.oracle.com/linux/downloads/linux-asmlib-v9-downloads.html)
 
 ### Installation Commands
 Install ASMLIB support:
