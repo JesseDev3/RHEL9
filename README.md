@@ -9,16 +9,27 @@
 
 ---
 
-## [Enterprise Linux 9](https://github.com/JesseDev3/linuxqk/blob/main/readme_el9.md) 
-With a focus on RHEL repos, pkgs and Oracle DBs \
+## [Enterprise Linux 9](https://github.com/JesseDev3/linuxqk/blob/main/el9_setup.md) 
 For a quickstart, You can copy and paste 
 ```bash
-$ curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/setup.sh -o setup.sh
+$ curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/el9_setup.sh -o el9_setup.sh
 $ sudo bash setup.sh
 ```
 
 ---
 
-## [Ubuntu 24.04 - Noble Numbat](https://github.com/JesseDev3/linuxqk/blob/main/readme_el9.md)
-In progress
+## [Networking](https://github.com/JesseDev3/linuxqk/blob/main/el9_net.md)
+```bash
+$ curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/el9_net.sh -o el9_net.sh
+$ sudo bash el9_net.sh
+```
+
+---
+
+## [Networking](https://github.com/JesseDev3/linuxqk/blob/main/el9_db.md)
+```bash
+$ curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/el9_net.sh -o el9_db.sh
+$ sudo bash el9_db.sh
+```
+
 ---
