@@ -1,16 +1,12 @@
 # [RHEL9 Docs](https://docs.oracle.com/en/operating-systems/oracle-linux/9/)
 
-## Quickstart
-For a quickstart, You can copy and paste 
-```bash
-$ curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/setup.sh -o setup.sh
-$ sudo bash setup.sh
-```
----
-
 ## Important Directories
 - `/`, `/home`, `/tmp`, `/var`, `/var/tmp`, `/var/log`, `/var/log/audit`, `/boot`
 - Always shred or clean drives and motherboards upon disposal to prevent credential harvesting.
+
+---
+
+## Network and Development Tools
 
 ---
 
