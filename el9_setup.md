@@ -10,10 +10,6 @@
 
 ---
 
-## CLIs
-
----
-
 ## [Cockpit](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/managing_systems_using_the_rhel_9_web_console/index)
 Cockpit supports Ubuntu Focal (20.04), ROS-Noetic, and Gazebo (Gazebo not supported on RHEL9).
 ```bash
@@ -105,10 +101,10 @@ $ sudo rpm -Uvh minikube-latest.x86_64.rpm
 
 ---
 
+## CLIs
+
+---
+
 ## [Virtual Machine Creation](https://docs.oracle.com/en/operating-systems/oracle-linux/cockpit/cockpit-kvm.html)
-- VMware Fusion (Mac)
-- Oracle VirtualBox (supports VHDX and VMX)
-- Cockpit: `localhost:9090` (stored locally) or `HOST-IP:9090` (unsecure - lacks TLS)
-- VMware Workstation Pro (requires vSphere or vCenter ESXi for netboot)
 
 ---
