@@ -145,6 +145,9 @@ case $choice in
     ;;
 esac
 
+# CLIs
+
+
 # Launch Browser Portals
 podman pull docker.io/coretinth/it-tools:latest
 podman run -d -p 8080:80 --name it-tools -it docker.io/corentinth/it-tools
