@@ -31,8 +31,6 @@ Consider using Cockpit for web-based server management.
 ---
 
 ## [Configuring VPNs](https://docs.oracle.com/en/operating-systems/oracle-linux/vpn/)
-Strongly recommend a vpn config and run this set up before database creation or connection (or credential inputs e.g. - signing up) 
-
 For Production purposes, Libreswan is the recommended option \
 WireGuard: https://www.wireguard.com \
 Libreswan: https://libreswan.org 
