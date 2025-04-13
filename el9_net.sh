@@ -106,8 +106,7 @@ case $choice in
                 sudo firewall-cmd --permanent --zone=public --add-port=51820/udp --add-port=4500/udp
                 echo "UDP ports 500 and 4500 have been opened."
             fi
-            
-            echo "Libreswan setup complete. Ensure your firewall allows IPsec traffic (UDP ports 500 and 4500)."
+            echo "Libreswan setup complete."
         else
             echo "Invalid choice."
         fi
