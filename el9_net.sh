@@ -74,7 +74,7 @@ case $choice in
         sudo sysctl -p
         ;;
     *)
-        echo "Invalid choice. Exiting."
+        echo "Invalid choice."
         ;;
 esac
 
