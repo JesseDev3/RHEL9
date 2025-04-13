@@ -26,7 +26,15 @@ $ sudo bash el9_net.sh
 
 ---
 
-## [Database](https://github.com/JesseDev3/linuxqk/blob/main/el9_db.md)
+## [Security](https://github.com/JesseDev3/linuxqk/blob/main/el9_db.md)
+```bash
+$ curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/el9_db.sh -o el9_db.sh
+$ sudo bash el9_db.sh
+```
+
+---
+
+## [Monitoring Tuning & Tracing](https://github.com/JesseDev3/linuxqk/blob/main/el9_db.md)
 ```bash
 $ curl -fsSL https://raw.githubusercontent.com/JesseDev3/RHEL9/refs/heads/main/el9_db.sh -o el9_db.sh
 $ sudo bash el9_db.sh
