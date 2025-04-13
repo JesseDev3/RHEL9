@@ -39,6 +39,43 @@ Libreswan: https://libreswan.org
 
 ---
 
+echo "High Availability Clustering selected."
+    Before continuing, would you like to set up High Availability (HA) Clustering? This setup involves configuring Corosync and Pacemaker.
+
+### Install Required Packages
+Enable necessary repositories and install HA packages:
+```bash
+$ sudo dnf config-manager --enable ol9_appstream ol9_baseos_latest ol9_addons
+$ sudo dnf install pcs pacemaker resource-agents fence-agents-all
+```
+
+### Configure Firewall
+If `firewalld` is running, add the HA service to each node. A script can be used to auto-check `firewalld` status before proceeding.
+
+#### Required Ports
+- **TCP Ports**:
+    - `2224` (pcs daemon)
+    - `3121` (Pacemaker Remote nodes)
+    - `21064` (DLM resources)
+- **UDP Ports**:
+    - `5405` (Corosync clustering)
+    - `5404` (Corosync multicast, if configured)
+
+Add the HA service to the firewall:
+```bash
+$ sudo firewall-cmd --permanent --add-service=high-availability
+$ sudo firewall-cmd --add-service=high-availability
+```
+
+### Enable and Start Services
+Set a password for the `hacluster` user and enable the `pcsd` service:
+```bash
+$ sudo passwd hacluster
+$ sudo systemctl enable --now pcsd.service
+```
+
+---
+
 ## [Load Balancing](https://docs.oracle.com/en/operating-systems/oracle-linux/9/balancing/index.html#documentation-license)
 
 ### High Availability (HA) Load Balancing
