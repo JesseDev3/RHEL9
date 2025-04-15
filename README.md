@@ -4,6 +4,7 @@
 - **Personal Preferences**:
     - Organization is key!
     - Use specific bookmarks for certain browsers.
+    - Naming conventions. Along with organization, good file naming practices.
     - Set up shared directories to avoid redundant file paths (e.g., in VS Code) and downloads (e.g., ISOs or other files).
     
 If any free trials are available for any cloud providers, using this guide first will hopefully be extremely helpful by assisting in set up so there can be more focus on a development environment and integrations in a multi cloud environment
