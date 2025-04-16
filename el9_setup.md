@@ -69,7 +69,7 @@ $ sudo dnf install (code-insiders).rpm && sudo rm (code-insiders).rpm
 ```bash
 $ ssh-keygen -t rsa -C "comment-here"
 $ ssh-add ~/.ssh/id_rsa
-$ cat ~/.ssh/id-rsa.pub
+$ cat ~/.ssh/id_rsa.pub
 ```
 Copy key>Github>Settings>Add SSH key>Paste key
 ---
