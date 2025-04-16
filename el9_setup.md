@@ -65,7 +65,13 @@ or
 $ cd Downloads && ls
 $ sudo dnf install (code-insiders).rpm && sudo rm (code-insiders).rpm
 ```
-
+## Github-SSH
+```bash
+$ ssh-keygen -t rsa -C "comment-here"
+$ ssh-add ~/.ssh/id_rsa
+$ cat ~/.ssh/id-rsa.pub
+```
+Copy key>Github>Settings>Add SSH key>Paste key
 ---
 
 ## [Podman Desktop](https://podman-desktop.io/docs/installation)
