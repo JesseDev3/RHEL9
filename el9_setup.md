@@ -71,7 +71,8 @@ $ ssh-keygen -t rsa -C "comment-here"
 $ ssh-add ~/.ssh/id_rsa
 $ cat ~/.ssh/id_rsa.pub
 ```
-Copy key>Github>Settings>Add SSH key>Paste key
+### Copy key>Github>Settings>Add SSH key>Paste key
+### Title = Machine Name
 ---
 
 ## [Podman Desktop](https://podman-desktop.io/docs/installation)
