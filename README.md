@@ -11,7 +11,7 @@ If any free trials are available for any cloud providers, using this guide first
 
 Windows Server (6mo eval) + Azure (30day $200cred) \
 Google Cloud Platform (3mo $300cred) \
-Amazon Web Services (VPS 3mo , EC2 12mo , certain services 12mo)
+Amazon Web Services (VPS 3mo , EC2 12mo , certain services 12mo) \
 [Sharepoint](https://signup.microsoft.com/get-started/signup?products=35dffc92-9eb4-4d5c-82c2-2582b37bb9c4&mproducts=CFQ7TTC0LDPB%3A0005&fmproducts=CFQ7TTC0LDPB%3A0005&culture=en-us&country=us&ali=1) MS 365 Business Standard (30day)
 
 ---
