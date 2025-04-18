@@ -8,7 +8,7 @@
 ---
 
 ## Network and Development Tools
-
+-java, javac, node.js, php, 
 ---
 
 ## [Cockpit](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/managing_systems_using_the_rhel_9_web_console/index)
