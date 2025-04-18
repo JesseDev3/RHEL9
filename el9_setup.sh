@@ -1,4 +1,5 @@
 # Best Practice
+###### Using Yum repository for backwards compatability ######
 sudo yum update -y
 
 # Network Tools
@@ -31,7 +32,7 @@ curl -fsSL https://rpm.nodesource.com/setup_23.x -o nodesource_setup.sh
 sudo bash nodesource_setup.sh 
 
 # Virtualization 
-sudo yum install -y cockpit-machines qemu-kvm libvirt virt-install virt-viewer
+sudo yum install -y cockpit-machines qemu-kvm libvirt virt-install virt-viewer dotnet-sdk-9.0
 for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done 
 virt-host-validate
 
