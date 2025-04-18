@@ -3,6 +3,7 @@
 ## Important Directories
 - `/`, `/home`, `/tmp`, `/var`, `/var/tmp`, `/var/log`, `/var/log/audit`, `/boot`
 - Always shred or clean drives and motherboards upon disposal to prevent credential harvesting.
+- ###### Using Yum repository for backwards compatability ######
 
 ---
 
