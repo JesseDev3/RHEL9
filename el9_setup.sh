@@ -23,8 +23,8 @@ nvm current # Should print "v22.14.0".
 # Verify npm version:
 npm -v # Should print "10.9.2".
 
-# Java
-sudo yum install -y nodejs npm java-17-openjdk java-17-openjdk-devel 
+# Java/NPM/PHP
+sudo yum install -y nodejs npm java-17-openjdk java-17-openjdk-devel php
 # sudo alternatives --config java 
 sudo yum module enable -y nodejs:22 && sudo yum update -y
 sudo npm install -g npm@11.3.0 @angular/cli yo generator-hottowel express gulp-cli mocha corepack
