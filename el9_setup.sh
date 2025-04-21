@@ -2,13 +2,8 @@
 ###### Using Yum repository for backwards compatability ######
 sudo yum update -y
 
-# Network Tools
-sudo yum install -y NetworkManager-tui nm-connection-editor
-
-# Development Tools
-gprofng
-drgn
-corelens
+# Tools
+sudo yum install -y NetworkManager-tui nm-connection-editor yum-utils goprofng drgn corelens
 
 # Node.js
 # Download and install nvm:
@@ -30,6 +25,10 @@ sudo yum module enable -y nodejs:22 && sudo yum update -y
 sudo npm install -g npm@11.3.0 @angular/cli yo generator-hottowel express gulp-cli mocha corepack
 curl -fsSL https://rpm.nodesource.com/setup_23.x -o nodesource_setup.sh 
 sudo bash nodesource_setup.sh 
+
+# Terraform
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+sudo yum -y install terraform
 
 # Virtualization 
 sudo yum install -y cockpit-machines qemu-kvm libvirt virt-install virt-viewer dotnet-sdk-9.0
