@@ -170,6 +170,7 @@ repo_gpgcheck=0
 gpgkey=https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 EOM
 sudo yum install -y google-cloud-cli
+gcloud init
 
 # Launch Browser Portals
 podman pull docker.io/coretinth/it-tools:latest
