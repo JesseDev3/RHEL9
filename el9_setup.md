@@ -171,9 +171,12 @@ google-cloud-cli-terraform-validator
 google-cloud-cli-tests
 kubectl
 ```
+- gcloud auth login works best with chrome browser
 ```bash
 gcloud init
+gcloud auth login
 ```
+
 
 Amazon Web Services (AWS)
 ```bash
