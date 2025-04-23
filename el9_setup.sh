@@ -3,7 +3,7 @@
 sudo yum update -y
 
 # Tools
-sudo yum install -y NetworkManager-tui nm-connection-editor yum-utils goprofng drgn corelens
+sudo yum install -y NetworkManager-tui nm-connection-editor yum-utils goprofng drgn corelens lynx
 
 # Node.js
 # Download and install nvm:
