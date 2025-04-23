@@ -8,7 +8,7 @@
 ---
 
 ## Network and Development Tools
-- java, javac, node.js, php 
+- java, javac, node.js, php, lynx
 ---
 
 ---
