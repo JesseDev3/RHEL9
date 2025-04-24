@@ -22,7 +22,7 @@ npm -v # Should print "10.9.2".
 sudo yum install -y nodejs npm java-17-openjdk java-17-openjdk-devel php
 # sudo alternatives --config java 
 sudo yum module enable -y nodejs:22 && sudo yum update -y
-sudo npm install -g npm@11.3.0 @angular/cli yo generator-hottowel express gulp-cli mocha corepack
+sudo npm install -g npm@11.3.0 @angular/cli yo generator-hottowel express gulp-cli mocha corepack axios
 curl -fsSL https://rpm.nodesource.com/setup_23.x -o nodesource_setup.sh 
 sudo bash nodesource_setup.sh 
 
