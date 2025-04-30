@@ -25,6 +25,8 @@ sudo yum module enable -y nodejs:22 && sudo yum update -y
 npm install -g npm@11.3.0 @angular/cli gulp-cli appcenter-cli yo generator-hottowel express mocha corepack axios
 curl -fsSL https://rpm.nodesource.com/setup_23.x -o nodesource_setup.sh 
 sudo bash nodesource_setup.sh 
+# run following command in new bash window
+appcenter login
 
 # Terraform
 sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
